@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* فقط تنظیمات ضروری تصاویر */
   images: {
     remotePatterns: [
       {
