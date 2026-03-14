@@ -1,25 +1,17 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const locales = ['en', 'de', 'fr', 'ru'];
-
-// نام تابع حتماً باید proxy باشد تا ارور برطرف شود
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  );
+  // اگر کاربر ریشه سایت را باز کرد، بفرستش به انگلیسی
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/en', request.url));
+  }
 
-  if (pathnameHasLocale) return NextResponse.next();
-
-  // ریدایرکت پیش‌فرض به انگلیسی
-  const url = request.nextUrl.clone();
-  url.pathname = `/en${pathname}`;
-  return NextResponse.redirect(url);
+  return NextResponse.next();
 }
 
-// تنظیمات مسیرها
 export const config = {
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
