@@ -1,37 +1,32 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// لیست زبان‌هایی که پوشه‌هایشان را ساختی
+// لیست زبان‌های پشتیبانی شده در S4HEL
 const locales = ['en', 'de', 'fr', 'ru'];
 const defaultLocale = 'en';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ۱. بررسی اینکه آیا مسیر فعلی از قبل شامل زبان هست یا خیر
+  // ۱. بررسی اینکه آیا مسیر فعلی همین الان شامل زبان هست یا خیر
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  // ۲. اگر زبان در آدرس نبود، کاربر را به زبان پیش‌فرض (English) هدایت کن
-  if (!pathnameHasLocale) {
-    // نادیده گرفتن فایل‌های سیستم، تصاویر و API ها
-    if (
-      pathname.includes('.') || 
-      pathname.startsWith('/api') || 
-      pathname.startsWith('/_next')
-    ) {
-      return;
-    }
+  // ۲. اگر مسیر شامل زبان بود، اجازه بده درخواست ادامه پیدا کند
+  if (pathnameHasLocale) return NextResponse.next();
 
-    // هدایت به /en
-    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
-  }
+  // ۳. اگر کاربر در صفحه اصلی (/) بود یا زبانی در آدرس نبود، او را به انگلیسی هدایت کن
+  request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
+  
+  // استفاده از NextResponse.redirect برای انتقال فیزیکی کاربر به آدرس درست
+  return NextResponse.redirect(request.nextUrl);
 }
 
+// ۴. تنظیمات Matcher برای اینکه میدل‌ویر روی فایل‌های سیستمی و تصاویر اجرا نشود
 export const config = {
   matcher: [
-    // اعمال روی تمام مسیرها به جز موارد خاص فنی برای حفظ سرعت سایت
+    // اجرا نشدن روی تمام مسیرهای داخلی نکس (api, _next/static, _next/image, favicon.ico)
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 };
