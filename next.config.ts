@@ -1,9 +1,11 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // ۱. هدایت خودکار کاربر از صفحه اصلی به بخش انگلیسی
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  // ۱. معرفی زبان‌ها و ریدایرکت هوشمند
   async redirects() {
     return [
       {
+        // اگر کاربر فقط آدرس اصلی را زد، او را به انگلیسی بفرست
         source: '/',
         destination: '/en',
         permanent: true,
@@ -11,25 +13,22 @@ const nextConfig = {
     ];
   },
 
-  // ۲. تنظیمات بهینه‌سازی تصاویر (اگر از لوگو یا عکس استفاده می‌کنی)
+  // ۲. اجازه به ورسل برای شناسایی مسیرهای بین‌المللی
+  // این بخش باعث می‌شود تمام پوشه‌های en, de, fr, ru به رسمیت شناخته شوند
+  i18n: {
+    locales: ['en', 'de', 'fr', 'ru'],
+    defaultLocale: 'en',
+    localeDetection: false, // جلوگیری از تداخل با ریدایرکت دستی ما
+  },
+
+  // ۳. تنظیمات بهینه‌سازی تصاویر (لوگو و بنرها)
   images: {
-    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
     ],
-  },
-
-  // ۳. نادیده گرفتن ارورهای کوچک تایپ‌اسکریپت برای Build سریع‌تر در Vercel
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  
-  // ۴. نادیده گرفتن هشدارهای ESLint در هنگام انتشار
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 
