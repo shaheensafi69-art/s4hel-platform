@@ -1,21 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // این بخش جایگزین Middleware می‌شود و ارور را برطرف می‌کند
+  // ریدایرکت از روت اصلی به پوشه en
   async redirects() {
     return [
       {
         source: '/',
         destination: '/en',
-        permanent: true, // ریدایرکت دائمی ۳۰۱ برای سئو عالی است
+        permanent: true,
       },
     ];
   },
-  // تنظیمات برای نادیده گرفتن ارورهای کوچک در هنگام Build
+  // این تنظیم باعث می‌شود ارورهای لایوت در زبان‌های دیگر مانع Build نشوند
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 
