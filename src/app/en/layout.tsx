@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import "../globals.css"; // دو نقطه برای برگشت به پوشه app
-
+import "../globals.css"; // دو نقطه برای دسترسی به فایل در پوشه app
 export default function EnLayout({
   children,
 }: {
