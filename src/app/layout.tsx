@@ -1,9 +1,11 @@
-// src/app/layout.tsx
 import "./globals.css";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "S4HEL | Global Business Solutions",
-  description: "Empowering entrepreneurs to scale globally.",
+  description: "Architecture for Global Founders",
 };
 
 export default function RootLayout({
@@ -13,9 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased font-sans">
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
