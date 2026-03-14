@@ -1,22 +1,23 @@
 import { ReactNode } from "react";
-import "../globals.css"; // فقط دو نقطه و یک اسلش
+// استفاده از @ باعث می‌شود نکس‌جی‌اس خودش از ریشه پروژه فایل را پیدا کند
+import "@/app/globals.css"; 
 import Header from "@/components/Header"; 
 import Footer from "@/components/Footer";
 
-interface LayoutProps {
-  children: ReactNode;
-  params: Promise<{ locale: string }>;
-}
-
-export default async function EnLayout({ children, params }: LayoutProps) {
+export default async function EnLayout({ 
+  children, 
+  params 
+}: { 
+  children: ReactNode, 
+  params: Promise<{ locale: string }> 
+}) {
+  // این خط برای ساکت کردن تایپ‌اسکریپت در نکس ۱۶ حیاتی است
   await params; 
 
   return (
     <>
       <Header />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
     </>
   );
