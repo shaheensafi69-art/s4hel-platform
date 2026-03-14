@@ -1,31 +1,37 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-/**
- * S4HEL Middleware
- * این فایل وظیفه مدیریت مسیرها و هدایت کاربر به زبان پیش‌فرض (en) را دارد.
- */
+// لیست زبان‌هایی که پوشه‌هایشان را ساختی
+const locales = ['en', 'de', 'fr', 'ru'];
+const defaultLocale = 'en';
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ۱. اگر کاربر مستقیماً وارد سایت شد (روت اصلی)، او را به بخش انگلیسی ببر
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL('/en', request.url));
-  }
+  // ۱. بررسی اینکه آیا مسیر فعلی از قبل شامل زبان هست یا خیر
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
 
-  return NextResponse.next();
+  // ۲. اگر زبان در آدرس نبود، کاربر را به زبان پیش‌فرض (English) هدایت کن
+  if (!pathnameHasLocale) {
+    // نادیده گرفتن فایل‌های سیستم، تصاویر و API ها
+    if (
+      pathname.includes('.') || 
+      pathname.startsWith('/api') || 
+      pathname.startsWith('/_next')
+    ) {
+      return;
+    }
+
+    // هدایت به /en
+    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
+  }
 }
 
-// این بخش باعث می‌شود میدل‌ویر روی فایل‌های سیستمی و تصاویر اجرا نشود و سرعت سایت کم نشود
 export const config = {
   matcher: [
-    /*
-     * استثنا کردن مسیرهای زیر:
-     * - api (مسیرهای ای‌پی‌آی)
-     * - _next/static (فایل‌های استاتیک)
-     * - _next/image (بهینه‌سازی تصویر)
-     * - favicon.ico (آیکون سایت)
-     */
+    // اعمال روی تمام مسیرها به جز موارد خاص فنی برای حفظ سرعت سایت
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 };

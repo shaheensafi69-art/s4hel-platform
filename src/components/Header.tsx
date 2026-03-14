@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-
-// رنگ‌بندی هماهنگ با تم اعتماد و آرامش
-const ACCENT = "#64FFDA"; // سبز-آبی روشن (آکوآ)
+import { ChevronDown, Globe } from "lucide-react"; // نیاز به نصب lucide-react دارید
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,12 +16,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // اصلاح مسیرها برای هدایت درست به پوشه en
   const navLinks = [
     { name: "Home", href: "/en" },
     { name: "Services", href: "/en/services" },
     { name: "About", href: "/en/about" },
     { name: "Contact", href: "/en/contact" },
+  ];
+
+  const languages = [
+    { name: "English", code: "EN", flag: "🇺🇸", active: true },
+    { name: "Deutsch", code: "DE", flag: "🇩🇪", active: false },
+    { name: "Français", code: "FR", flag: "🇫🇷", active: false },
+    { name: "Русский", code: "RU", flag: "🇷🇺", active: false },
   ];
 
   return (
@@ -63,7 +68,50 @@ export default function Header() {
 
         {/* RIGHT SIDE ACTIONS */}
         <div className="flex items-center gap-5">
-          {/* دکمه بلاگ - هدایت به مسیر دقیق src/app/en/blog/page.tsx */}
+          
+          {/* LANGUAGE SELECTOR */}
+          <div className="relative">
+            <button 
+              onClick={() => setIsLangOpen(!isLangOpen)}
+              className="flex items-center gap-2 px-3 py-2 text-[10px] font-bold text-[#8892B0] hover:text-[#64FFDA] transition-colors duration-300"
+            >
+              <Globe size={14} className="text-[#64FFDA]" />
+              <span>EN</span>
+              <ChevronDown size={12} className={`transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+              {isLangOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 mt-4 w-48 bg-[#0A192F] border border-white/10 rounded-xl p-2 shadow-2xl backdrop-blur-xl"
+                >
+                  {languages.map((lang) => (
+                    <div 
+                      key={lang.code}
+                      className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition-all ${
+                        lang.active 
+                          ? "bg-[#64FFDA]/10 text-[#64FFDA] cursor-pointer" 
+                          : "opacity-40 cursor-not-allowed"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span>{lang.flag}</span>
+                        <span className="text-[11px] font-bold tracking-wider">{lang.name}</span>
+                      </div>
+                      {!lang.active && (
+                        <span className="text-[7px] bg-white/5 px-1.5 py-0.5 rounded text-[#8892B0] uppercase">Soon</span>
+                      )}
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* INTELLIGENCE BUTTON */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link 
               href="/en/blog" 
@@ -73,7 +121,7 @@ export default function Header() {
             </Link>
           </motion.div>
 
-          {/* دکمه Get Started - کپسولی و درخشان */}
+          {/* GET STARTED BUTTON */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link 
               href="https://www.registeredagentsinc.com/business-formation/" 
@@ -86,7 +134,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* خط ظریف کهکشانی */}
       {!isScrolled && (
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       )}
