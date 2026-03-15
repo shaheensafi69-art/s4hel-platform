@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
-import "../../globals.css"; 
-import Header from "@/components/Header"; 
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import "@/app/globals.css";
 
-export default function FrLayout({ children }: { children: ReactNode }) {
+export default function LanguageLayout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <section>
       <Header />
       <main>{children}</main>
       <Footer />
-    </>
+    </section>
   );
 }

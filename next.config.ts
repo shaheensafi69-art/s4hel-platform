@@ -1,23 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* تنظیمات اصلی */
-  typescript: {
-    // بی‌خیال ارورهای تایپ‌اسکریپت موقع بیلد
-    ignoreBuildErrors: true,
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   eslint: {
-    // بی‌خیال ارورهای لایه ESLint موقع بیلد
+    // مانع توقف بیلد توسط خطاهای ESLint می‌شود
     ignoreDuringBuilds: true,
   },
-  // اگر تصاویر از دامین‌های دیگر داری
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+  typescript: {
+    // مانع توقف بیلد توسط خطاهای تایپ‌اسکریپت می‌شود
+    ignoreBuildErrors: true,
   },
 };
 
