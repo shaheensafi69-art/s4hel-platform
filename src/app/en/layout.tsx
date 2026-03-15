@@ -1,17 +1,16 @@
 import { ReactNode } from "react";
-// استفاده از @ باعث می‌شود نکس‌جی‌اس خودش از ریشه پروژه فایل را پیدا کند
-import "@/app/globals.css"; 
+import "../globals.css"; 
 import Header from "@/components/Header"; 
 import Footer from "@/components/Footer";
 
-export default async function EnLayout({ 
+export default async function LanguageLayout({ 
   children, 
   params 
 }: { 
   children: ReactNode, 
   params: Promise<{ locale: string }> 
 }) {
-  // این خط برای ساکت کردن تایپ‌اسکریپت در نکس ۱۶ حیاتی است
+  // این خط برای پاس کردن بیلد ورسل در نکس ۱۶ الزامی است
   await params; 
 
   return (

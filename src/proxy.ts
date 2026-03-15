@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function proxy(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
-  // اگر کاربر ریشه سایت را باز کرد، بفرستش به انگلیسی
+  
+  // ریدایرکت ریشه سایت به زبان پیش‌فرض
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/en', request.url));
   }
-
+  
   return NextResponse.next();
 }
 
