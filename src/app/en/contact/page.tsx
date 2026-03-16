@@ -1,120 +1,137 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { Mail, MapPin, Phone, MessageSquare, ArrowUpRight, Globe } from "lucide-react";
 
 const ACCENT = "#64FFDA";
 
-export default function ContactPage() {
+export default function EliteContactPage() {
+  const contactInfo = [
+    {
+      label: "Official Location",
+      value: "1001 S Main St Ste 500, Kalispell, Montana 59901",
+      icon: <MapPin size={24} />,
+      link: "https://maps.google.com/?q=1001+S+Main+st+ste+500+Kalispell+Montana+59901"
+    },
+    {
+      label: "Executive Email",
+      value: "Contact@s4hel.com",
+      icon: <Mail size={24} />,
+      link: "mailto:Contact@s4hel.com"
+    },
+    {
+      label: "Global Hotline",
+      value: "+1 406 316 0317",
+      icon: <Phone size={24} />,
+      link: "tel:+14063160317"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-[#020C1B] text-[#CCD6F6] pt-32 pb-20 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020C1B] text-[#CCD6F6] pt-40 pb-20 px-6 relative overflow-hidden font-sans">
       
-      {/* Background Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[#64FFDA]/5 blur-[120px] pointer-events-none" />
+      {/* Background Architectural Elements */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#64FFDA]/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* Header Section */}
-        <div className="text-center mb-24">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-[#64FFDA] font-mono text-[10px] uppercase tracking-[0.8em] mb-6 block"
+        {/* HEADER: MASSIVE & BOLD */}
+        <div className="mb-32">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-4 mb-6"
           >
-            Global Support Nexus
-          </motion.span>
-          <h1 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none mb-8">
-            GET IN <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#64FFDA] to-white">TOUCH</span>
-          </h1>
-          <p className="max-w-2xl mx-auto text-[#8892B0] text-lg font-medium italic">
-            Connect with our strategic consultants to begin your United States business journey.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="w-12 h-[1px] bg-[#64FFDA]"></div>
+            <span className="text-[#64FFDA] font-black text-[10px] uppercase tracking-[0.6em]">Nexus Connection</span>
+          </motion.div>
           
-          {/* Contact Information Cards */}
-          <div className="space-y-6">
-            <h2 className="text-2xl font-black text-white uppercase tracking-widest mb-10 border-l-4 border-[#64FFDA] pl-6">
-              Official Channels
-            </h2>
-
-            {/* Email Card */}
-            <motion.div 
-              whileHover={{ x: 10 }}
-              className="p-10 bg-[#112240] rounded-[40px] border border-white/5 flex flex-col gap-4"
-            >
-              <span className="text-[#64FFDA] text-[10px] font-black uppercase tracking-widest">Executive Email</span>
-              <a href="mailto:sahelsalem@s4hel.com" className="text-xl md:text-2xl font-bold text-white hover:text-[#64FFDA] transition-colors">
-                sahelsalem@s4hel.com
-              </a>
-            </motion.div>
-
-            {/* Phone & WhatsApp Card */}
-            <motion.div 
-              whileHover={{ x: 10 }}
-              className="p-10 bg-[#112240] rounded-[40px] border border-white/5 flex flex-col gap-4"
-            >
-              <span className="text-[#64FFDA] text-[10px] font-black uppercase tracking-widest">Global Hotline & WhatsApp</span>
-              <a href="tel:+447740589731" className="text-xl md:text-2xl font-bold text-white hover:text-[#64FFDA] transition-colors">
-                +44 7740 589731
-              </a>
-              <div className="pt-4">
-                <a 
-                  href="https://wa.me/447740589731" 
-                  target="_blank" 
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366]/10 text-[#25D366] rounded-full text-[10px] font-black uppercase tracking-widest border border-[#25D366]/20 hover:bg-[#25D366] hover:text-white transition-all"
-                >
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.52.909 3.321 1.389 5.166 1.39h.005c5.732 0 10.396-4.662 10.399-10.393 0-2.779-1.081-5.391-3.044-7.354s-4.575-3.042-7.354-3.042c-5.732 0-10.395 4.664-10.398 10.397 0 2.128.63 4.2 1.819 5.969l-.996 3.637 3.714-.974zm11.367-7.44c-.273-.137-1.617-.798-1.867-.89-.25-.09-.432-.137-.613.137s-.705.89-.864 1.072-.318.204-.591.068c-.273-.137-1.154-.425-2.2-1.358-.813-.726-1.362-1.622-1.521-1.895s-.017-.421.119-.557c.124-.124.273-.318.409-.477.136-.159.182-.273.273-.455s.045-.341-.023-.477c-.068-.137-.613-1.477-.841-2.022-.222-.534-.446-.462-.613-.471l-.523-.006c-.182 0-.477.068-.727.341s-.954.932-.954 2.273 1.023 2.636 1.159 2.818c.136.182 2.014 3.076 4.88 4.319.682.296 1.214.474 1.628.606.685.217 1.307.186 1.8.113.55-.082 1.617-.66 1.844-1.297.227-.636.227-1.183.159-1.297-.069-.114-.25-.204-.523-.341z"/></svg>
-                  Chat on WhatsApp
-                </a>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="bg-[#112240]/50 p-12 rounded-[60px] border border-white/5 backdrop-blur-sm shadow-2xl">
-            <h3 className="text-xl font-black text-white uppercase tracking-widest mb-10 italic">Secure Inquiry Form</h3>
-            <form className="space-y-8">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-[#64FFDA] ml-4">Full Name</label>
-                <input 
-                  type="text" 
-                  placeholder="John Doe" 
-                  className="w-full bg-[#0A192F] border border-white/10 rounded-full px-8 py-5 text-sm focus:border-[#64FFDA] outline-none transition-all text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-[#64FFDA] ml-4">Email Address</label>
-                <input 
-                  type="email" 
-                  placeholder="office@example.com" 
-                  className="w-full bg-[#0A192F] border border-white/10 rounded-full px-8 py-5 text-sm focus:border-[#64FFDA] outline-none transition-all text-white"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-[#64FFDA] ml-4">Message / Business Intent</label>
-                <textarea 
-                  rows={4} 
-                  placeholder="Describe your business goals..." 
-                  className="w-full bg-[#0A192F] border border-white/10 rounded-[30px] px-8 py-6 text-sm focus:border-[#64FFDA] outline-none transition-all text-white resize-none"
-                />
-              </div>
-              <button className="w-full py-6 bg-white text-[#020C1B] rounded-full font-black uppercase text-xs tracking-[0.4em] hover:bg-[#64FFDA] transition-all shadow-xl">
-                Transmit Inquiry
-              </button>
-            </form>
-          </div>
-
+          <h1 className="text-[12vw] md:text-[140px] font-black text-white uppercase tracking-tighter leading-[0.8] italic mb-12">
+            LET'S <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#64FFDA] to-[#112240] italic-shifter">CONNECT</span>
+          </h1>
         </div>
 
-        {/* Support Disclaimer */}
-        <div className="mt-32 p-10 border border-white/5 rounded-[50px] text-center max-w-4xl mx-auto">
-          <p className="text-[11px] text-[#495670] uppercase tracking-widest leading-loose italic">
-            Priority Support: Our executive consultants typically respond within 12-24 business hours. All data transmitted through this portal is encrypted and handled according to our international privacy standards.
-          </p>
+        {/* CONTACT GRID */}
+        <div className="grid lg:grid-cols-3 gap-6 mb-20">
+          {contactInfo.map((info, i) => (
+            <motion.a
+              key={i}
+              href={info.link}
+              target="_blank"
+              whileHover={{ y: -10 }}
+              className="group p-12 bg-white/[0.02] border border-white/5 rounded-[60px] backdrop-blur-3xl flex flex-col justify-between h-[400px] hover:border-[#64FFDA]/30 transition-all duration-500"
+            >
+              <div className="w-16 h-16 rounded-3xl bg-[#64FFDA]/10 flex items-center justify-center text-[#64FFDA] group-hover:bg-[#64FFDA] group-hover:text-[#020C1B] transition-all duration-500">
+                {info.icon}
+              </div>
+              
+              <div className="space-y-4">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#64FFDA]/60">{info.label}</span>
+                <h3 className="text-2xl font-bold text-white leading-tight group-hover:text-[#64FFDA] transition-colors">{info.value}</h3>
+              </div>
+
+              <div className="flex justify-end">
+                <ArrowUpRight className="text-white/20 group-hover:text-[#64FFDA] transition-colors" size={32} />
+              </div>
+            </motion.a>
+          ))}
+        </div>
+
+        {/* WHATSAPP ELITE SECTION */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="relative rounded-[80px] p-1 bg-gradient-to-r from-[#64FFDA]/20 to-transparent"
+        >
+          <div className="bg-[#0A192F] rounded-[78px] p-12 md:p-20 flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="space-y-6 text-center md:text-left">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-[#25D366]/10 text-[#25D366] rounded-full text-[10px] font-black uppercase tracking-widest border border-[#25D366]/20">
+                <span className="w-2 h-2 bg-[#25D366] rounded-full animate-ping"></span>
+                Active Support
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">Instant WhatsApp <br /> Intelligence</h2>
+              <p className="text-[#8892B0] max-w-md italic">Direct access to our senior consultants. Strictly for text inquiries regarding international formation and banking.</p>
+            </div>
+
+            <div className="flex flex-col items-center gap-4">
+              <a 
+                href="https://wa.me/14063160317" 
+                target="_blank"
+                className="group relative px-16 py-8 bg-[#25D366] text-[#020C1B] rounded-full font-black uppercase text-sm tracking-[0.4em] hover:scale-105 transition-all shadow-[0_0_60px_rgba(37,211,102,0.2)]"
+              >
+                Start Chat
+                <div className="absolute -top-2 -right-2 bg-white px-3 py-1 rounded-md text-[8px] font-black shadow-lg">TEXT ONLY</div>
+              </a>
+              <span className="text-[10px] font-bold text-[#8892B0] uppercase tracking-widest opacity-50">No Voice Calls • Messages Only</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* FOOTER INFO */}
+        <div className="mt-40 grid md:grid-cols-2 gap-20 border-t border-white/5 pt-20">
+           <div className="space-y-6">
+              <h4 className="text-white font-black uppercase tracking-widest text-xs">S4HEL Intelligence Hub</h4>
+              <p className="text-[#495670] text-sm leading-relaxed italic">
+                S4HEL is an elite strategic partner for global entrepreneurs. Our Montana headquarters serves as the bridge between international visionaries and the United States market infrastructure.
+              </p>
+           </div>
+           <div className="flex flex-col md:items-end justify-center gap-4">
+              <div className="flex gap-8 text-[#64FFDA] font-black text-[10px] uppercase tracking-widest">
+                <span className="opacity-40">Privacy Policy</span>
+                <span className="opacity-40">Terms of Service</span>
+              </div>
+              <p className="text-[#495670] text-[10px] uppercase tracking-[0.3em]">© 2026 S4HEL • All Rights Reserved</p>
+           </div>
         </div>
 
       </div>
+
+      <style jsx>{`
+        .italic-shifter { font-style: italic; letter-spacing: -0.05em; }
+        .text-outline { -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2); }
+      `}</style>
     </div>
   );
 }

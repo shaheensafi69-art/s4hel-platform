@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-[#020C1B] border-t border-[#64FFDA]/10 pt-24 pb-12 relative overflow-hidden">
+    <footer className="w-full bg-[#020C1B] border-t border-[#64FFDA]/10 pt-24 pb-12 relative overflow-hidden font-sans">
       {/* Decorative Grid Background */}
       <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(#64FFDA 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
@@ -17,12 +17,12 @@ export default function Footer() {
           
           {/* Brand & Concept */}
           <div className="lg:col-span-5 space-y-8">
-            <Link href="/" className="inline-block group">
-              <span className="text-4xl font-black text-white tracking-[ -0.05em] uppercase">
+            <Link href="/en" className="inline-block group">
+              <span className="text-4xl font-black text-white tracking-[-0.05em] uppercase italic">
                 S4<span className="text-[#64FFDA] transition-all duration-500 group-hover:tracking-widest">HEL</span>
               </span>
             </Link>
-            <p className="text-[#8892B0] text-sm leading-relaxed max-w-md font-medium opacity-80">
+            <p className="text-[#8892B0] text-sm leading-relaxed max-w-md font-medium opacity-80 italic">
               Forging the digital frontier for global founders. We provide the elite-level infrastructure and regulatory intelligence required to scale without boundaries.
             </p>
             <div className="flex gap-4">
@@ -58,17 +58,24 @@ export default function Footer() {
 
         {/* Status & Legal */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col gap-2 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2">
               <div className="h-1.5 w-1.5 rounded-full bg-[#64FFDA] animate-pulse" />
               <span className="text-[#495670] text-[9px] font-mono tracking-widest uppercase">Global Systems Operational</span>
             </div>
-            <p className="text-[#8892B0] text-[9px] font-bold tracking-tighter italic">© {currentYear} S4HEL INTELLIGENCE. RECOGNIZED WORLDWIDE.</p>
+            {/* اضافه شدن S4HEL LLC به این بخش */}
+            <p className="text-[#8892B0] text-[9px] font-bold tracking-tighter italic uppercase">
+              © {currentYear} S4HEL LLC. Intelligence Hub. Registered in Montana, USA.
+            </p>
           </div>
           
           <div className="flex gap-12">
-            <Link href="#" className="text-[#495670] text-[9px] uppercase tracking-[0.2em] hover:text-white transition-colors">Privacy_Log</Link>
-            <Link href="#" className="text-[#495670] text-[9px] uppercase tracking-[0.2em] hover:text-white transition-colors">Terms_Of_Service</Link>
+            <Link href="/en/privacy" className="text-[#64FFDA] text-[10px] font-black uppercase tracking-[0.2em] hover:text-white transition-all border-b border-[#64FFDA]/20 pb-1">
+              Privacy_Log
+            </Link>
+            <Link href="/en/terms" className="text-[#64FFDA] text-[10px] font-black uppercase tracking-[0.2em] hover:text-white transition-all border-b border-[#64FFDA]/20 pb-1">
+              Terms_Of_Service
+            </Link>
           </div>
         </div>
       </div>
