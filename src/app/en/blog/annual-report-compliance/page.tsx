@@ -1,142 +1,197 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { 
+  ArrowLeft, 
+  ArrowRight, 
+  MousePointer2, 
+  CheckCircle2, 
+  ShieldAlert, 
+  CalendarClock,
+  ClipboardCheck,
+  Globe2
+} from "lucide-react";
 
-const ACCENT = "#64FFDA";
-
-export default function AnnualReportBlog() {
-  const requirements = [
-    { t: "Good Standing", d: "Filing your annual report is the only way to keep your LLC in 'Active' status with the state." },
-    { t: "Updated Information", d: "A chance to update the state on any changes to your business address or management." },
-    { t: "State Fees", d: "Most states require a convenience fee to process your annual filing and keep your license valid." },
-    { t: "Avoid Dissolution", d: "Missing the deadline can lead to 'Administrative Dissolution,' where the state shuts down your LLC." }
+export default function AnnualReportCompliance() {
+  const steps = [
+    {
+      id: "01",
+      title: "Identify Your Due Date",
+      action: "Check State Requirements",
+      desc: "Every state has different deadlines. Some require filing on the anniversary of formation, while others have a fixed date (like May 1st in Florida). Missing this date can lead to administrative dissolution.",
+      link: "https://www.registeredagentsinc.com/annual-reports/",
+      buttonText: "View Deadlines by State"
+    },
+    {
+      id: "02",
+      title: "Verify LLC Information",
+      action: "Update Principal Address",
+      desc: "Before filing, ensure your principal office address and Registered Agent information are current. The Annual Report is the official way to notify the state of any internal changes.",
+      link: "https://www.registeredagentsinc.com/registered-agent/",
+      buttonText: "Check Agent Status"
+    },
+    {
+      id: "03",
+      title: "Pay the State Filing Fee",
+      action: "Process State Payment",
+      desc: "Wyoming charges $62, while California is $25 (Statement of Information). You must pay this fee via the Secretary of State portal to maintain your 'Good Standing' status.",
+      link: "https://www.registeredagentsinc.com/annual-reports/wyoming/",
+      buttonText: "Pay Wyoming Fee"
+    },
+    {
+      id: "04",
+      title: "Confirm Member/Manager Privacy",
+      action: "Manage Public Records",
+      desc: "In states like Wyoming, you can maintain privacy by using a professional service. Ensure your personal home address isn't being exposed in this year's filing.",
+      link: "https://www.registeredagentsinc.com/wyoming-registered-agent/",
+      buttonText: "Secure Your Privacy"
+    },
+    {
+      id: "05",
+      title: "File the BOI Report (FinCEN)",
+      action: "New Federal Compliance",
+      desc: "In addition to the state annual report, almost all LLCs must now file the Beneficial Ownership Information (BOI) report with FinCEN. Failure to do this results in massive daily fines.",
+      link: "https://www.registeredagentsinc.com/beneficial-ownership-information-report/",
+      buttonText: "File BOI Report"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-[#020C1B] text-[#CCD6F6] pt-32 pb-20 px-6 relative overflow-hidden">
-      
-      {/* Back Button */}
-      <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="fixed top-32 left-6 md:left-12 z-50"
-      >
-        <Link 
-          href="/en/blog" 
-          className="flex items-center gap-2 px-6 py-3 bg-[#112240] border border-white/10 rounded-full text-[#64FFDA] font-bold text-xs uppercase tracking-widest hover:bg-[#64FFDA] hover:text-[#020C1B] transition-all duration-500 shadow-2xl backdrop-blur-md"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          <span>Intelligence</span>
-        </Link>
-      </motion.div>
-
-      {/* Background Animation */}
-      <div className="fixed inset-0 z-0 opacity-20">
-        <div className="stars-annual" />
-      </div>
-
-      <div className="max-w-5xl mx-auto relative z-10">
+    <div className="min-h-screen bg-[#020C1B] text-[#CCD6F6] pt-32 pb-20 selection:bg-[#64FFDA] selection:text-[#020C1B]">
+      <div className="max-w-4xl mx-auto px-6">
         
-        {/* Hero Section */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="relative w-full h-80 md:h-[400px] rounded-[70px] mb-20 overflow-hidden shadow-2xl border border-white/5 flex flex-col items-center justify-center text-center p-10"
-          style={{ background: `linear-gradient(135deg, #0A192F 0%, #020C1B 100%)` }}
-        >
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-          <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white mb-6">
-            Annual <span className="text-[#64FFDA]">Reports</span>
+        {/* --- BACK BUTTON --- */}
+        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="mb-10">
+          <Link 
+            href="/en/blog" 
+            className="group inline-flex items-center gap-2 text-[#8892B0] hover:text-[#64FFDA] transition-colors font-black uppercase tracking-[0.3em] text-[10px]"
+          >
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Library
+          </Link>
+        </motion.div>
+
+        {/* --- HERO --- */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-16">
+          <h1 className="text-5xl md:text-8xl font-black text-white italic tracking-tighter mb-6 leading-tight uppercase">
+            ANNUAL REPORT <br /> <span className="text-[#64FFDA]">COMPLIANCE</span>
           </h1>
-          <p className="text-[#8892B0] text-xs md:text-sm font-black uppercase tracking-[0.6em] max-w-xl">
-            Ensuring Your Entity's Survival & Compliance
+          <p className="text-xl text-[#8892B0] font-medium max-w-2xl border-l-2 border-[#64FFDA] pl-6 italic">
+            Your definitive guide to mandatory annual filing. Don't let your LLC be dissolved over a simple administrative deadline.
           </p>
         </motion.div>
 
-        {/* Content Section */}
-        <article className="space-y-20 text-lg leading-relaxed text-[#8892B0] font-medium italic">
-          
-          <section className="space-y-6">
-            <h2 className="text-3xl font-black uppercase text-white tracking-widest">The Compliance Clock</h2>
-            <p>
-              In the United States, an LLC is a "living" entity that requires periodic check-ins with the Secretary of State. The <strong>Annual Report</strong> (sometimes called a Biennial Report or Franchise Tax Report) is a mandatory filing that confirms your business is still operational and its information is current.
-            </p>
-          </section>
+        {/* --- MASTER IMAGE --- */}
+        <div className="relative h-[450px] w-full rounded-[40px] overflow-hidden mb-20 border border-white/10 shadow-2xl">
+          <Image 
+            src="/blog/annual-report-compliance/hero.jpg" 
+            alt="Annual Report Compliance Infographic" 
+            fill 
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020C1B] via-transparent to-transparent" />
+        </div>
 
-          {/* Core Requirements Grid */}
-          <section className="grid md:grid-cols-2 gap-8">
-            {requirements.map((req, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ y: -10 }}
-                className="p-10 bg-[#112240] rounded-[50px] border border-white/5 hover:border-[#64FFDA]/20 transition-all"
-              >
-                <h4 className="font-black text-white uppercase text-xs tracking-widest mb-4">{req.t}</h4>
-                <p className="text-sm opacity-60 leading-relaxed">{req.d}</p>
-              </motion.div>
-            ))}
-          </section>
+        {/* --- THE STEPS --- */}
+        <div className="space-y-24 mb-32">
+          {steps.map((s, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative pl-12 md:pl-0"
+            >
+              <div className="md:grid md:grid-cols-[150px_1fr] gap-10 items-start">
+                <div className="hidden md:flex flex-col items-center">
+                  <span className="text-7xl font-black text-white/5 group-hover:text-[#64FFDA]/20 transition-all">{s.id}</span>
+                  <div className="w-[2px] h-32 bg-gradient-to-b from-[#64FFDA]/50 to-transparent mt-4" />
+                </div>
+                
+                <div className="bg-[#112240] p-8 md:p-12 rounded-[50px] border border-white/5 hover:border-[#64FFDA]/30 transition-all shadow-xl">
+                  <div className="flex items-center gap-3 mb-4 text-[#64FFDA]">
+                    <MousePointer2 size={20} />
+                    <span className="text-xs font-black uppercase tracking-[0.3em]">{s.action}</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-black text-white mb-6 uppercase italic leading-tight">{s.title}</h3>
+                  <p className="text-[#8892B0] leading-relaxed mb-8 text-lg">{s.desc}</p>
+                  
+                  <a 
+                    href={s.link} 
+                    target="_blank" 
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-[#64FFDA] text-[#020C1B] rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-lg"
+                  >
+                    {s.buttonText} <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-          {/* State Comparison Box */}
-          <section className="bg-white/5 p-12 rounded-[60px] border border-white/10 space-y-8">
-            <h3 className="text-2xl font-black uppercase text-white tracking-widest">State-Specific Deadlines</h3>
-            <p className="text-sm">Each jurisdiction has its own rules. Missing these dates can result in late fees starting from $50 up to $200+ depending on the state.</p>
-            <div className="grid gap-4">
-              <div className="flex justify-between p-6 bg-[#020C1B] rounded-3xl border border-white/5">
-                <span className="text-[#64FFDA] font-bold uppercase text-xs tracking-widest">Wyoming</span>
-                <span className="text-xs italic text-white/50 text-right">Due 1st day of anniversary month</span>
-              </div>
-              <div className="flex justify-between p-6 bg-[#020C1B] rounded-3xl border border-white/5">
-                <span className="text-[#64FFDA] font-bold uppercase text-xs tracking-widest">Delaware</span>
-                <span className="text-xs italic text-white/50 text-right">Due by June 1st annually</span>
-              </div>
-              <div className="flex justify-between p-6 bg-[#020C1B] rounded-3xl border border-white/5">
-                <span className="text-[#64FFDA] font-bold uppercase text-xs tracking-widest">New Mexico</span>
-                <span className="text-xs italic text-white/50 text-right">No Annual Reports required</span>
+        {/* --- QUICK TIPS & INTEGRATIONS --- */}
+        <section className="bg-white/5 p-12 rounded-[60px] border border-white/10 mb-32">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                <CalendarClock className="text-[#64FFDA]" /> Pro Filing Tips
+              </h2>
+              <ul className="space-y-4">
+                {[
+                  "Mark your calendar 30 days before deadline",
+                  "Review state requirements early each year",
+                  "Set up auto-reminders via email",
+                  "File early to avoid late penalties"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm italic">
+                    <CheckCircle2 size={16} className="text-[#64FFDA] mt-1" /> {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3">
+                <Globe2 className="text-[#64FFDA]" /> Global Support
+              </h2>
+              <p className="text-sm text-[#8892B0] leading-relaxed italic mb-4">
+                Operating from Europe or Asia? Registered Agents Inc provides a seamless portal for global entrepreneurs to manage US compliance without a US phone number.
+              </p>
+              <div className="flex gap-4">
+                <span className="px-3 py-1 bg-[#64FFDA]/10 rounded text-[10px] text-[#64FFDA] font-bold">Stripe</span>
+                <span className="px-3 py-1 bg-[#64FFDA]/10 rounded text-[10px] text-[#64FFDA] font-bold">Mercury Bank</span>
+                <span className="px-3 py-1 bg-[#64FFDA]/10 rounded text-[10px] text-[#64FFDA] font-bold">Xero</span>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* Warning Section */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="p-10 border-l-4 border-red-500/50 bg-red-500/5 rounded-r-[40px]"
+        {/* --- CRITICAL PENALTY WARNING --- */}
+        <section className="mb-32 border-l-4 border-red-500/50 bg-red-500/5 p-8 rounded-r-[30px]">
+          <h4 className="text-red-400 font-black mb-4 uppercase tracking-widest flex items-center gap-2">
+            <ShieldAlert size={20} /> Administrative Dissolution
+          </h4>
+          <p className="text-sm text-[#8892B0] italic leading-relaxed">
+            If you miss your filing, the state will move your LLC to 'Delinquent' status. Within months, your entity will be dissolved. You will lose legal protection, and your business name becomes available for anyone else to take.
+          </p>
+        </section>
+
+        {/* --- FINAL CTA --- */}
+        <div className="text-center bg-gradient-to-b from-transparent to-[#112240] p-16 rounded-[80px] border border-white/5">
+          <ClipboardCheck className="mx-auto text-[#64FFDA] mb-8" size={60} />
+          <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter uppercase italic">Maintain Your <br /> Good Standing</h2>
+          <a 
+            href="https://www.registeredagentsinc.com/annual-reports/" 
+            target="_blank"
+            className="inline-block px-16 py-6 bg-[#64FFDA] text-[#020C1B] rounded-full font-black uppercase tracking-[0.4em] text-xs hover:shadow-[0_0_50px_rgba(100,255,218,0.4)] transition-all"
           >
-            <h4 className="text-white font-black uppercase text-xs tracking-widest mb-2">The Ultimate Risk</h4>
-            <p className="text-xs opacity-70">If the state dissolves your LLC for non-compliance, you lose your personal liability protection. This means your personal assets (cars, house, savings) could be at risk for business debts.</p>
-          </motion.div>
+            File My Report Now
+          </a>
+        </div>
 
-          {/* Final Button */}
-          <section className="text-center pt-10">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link 
-                href="/en/contact" 
-                className="inline-block px-24 py-7 bg-[#64FFDA] text-[#020C1B] rounded-full font-black uppercase tracking-[0.4em] shadow-[0_20px_60px_-15px_rgba(100,255,218,0.4)] transition-all duration-700"
-              >
-                Manage My Compliance
-              </Link>
-            </motion.div>
-          </section>
-
-        </article>
       </div>
-
-      <style jsx global>{`
-        .stars-annual {
-          width: 100%; height: 100%;
-          background-image: 
-            radial-gradient(1px 1px at 10% 20%, white, rgba(0,0,0,0)),
-            radial-gradient(1.2px 1.2px at 80% 80%, #64FFDA, rgba(0,0,0,0));
-          background-size: 300px 300px;
-          animation: driftAnnual 100s linear infinite;
-        }
-        @keyframes driftAnnual {
-          from { background-position: 0 0; }
-          to { background-position: -500px 500px; }
-        }
-      `}</style>
     </div>
   );
 }

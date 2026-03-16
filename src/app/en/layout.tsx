@@ -1,14 +1,17 @@
+// مسیر: app/[locale]/layout.tsx
 import { ReactNode } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+// هدر و فوتر را از اینجا حذف می‌کنیم چون در لایوت اصلی وجود دارند
 import "@/app/globals.css";
 
 export default function LanguageLayout({ children }: { children: ReactNode }) {
   return (
-    <section>
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </section>
+    <>
+      {/* تگ <section> یا یک Fragment ساده کافی است.
+          هدر و فوتر را از اینجا پاک کردیم تا با لایوت اصلی تداخل نکند.
+      */}
+      <main>
+        {children}
+      </main>
+    </>
   );
 }

@@ -106,13 +106,12 @@ export default function Header() {
             </AnimatePresence>
           </div>
 
-          {/* GET STARTED (Desktop Only) */}
+          {/* INTELLIGENCE HUB (Desktop Only) */}
           <Link 
-            href="https://www.registeredagentsinc.com/business-formation/" 
-            target="_blank"
+            href="/en/blog" 
             className="hidden sm:block px-6 lg:px-8 py-3 bg-[#64FFDA] text-[#020C1B] rounded-full text-[10px] font-black uppercase tracking-widest shadow-[0_10px_20px_-5px_rgba(100,255,218,0.3)] hover:shadow-[0_0_30px_rgba(100,255,218,0.5)] transition-all duration-500"
           >
-            Get Started
+            Intelligence Hub
           </Link>
 
           {/* HAMBURGER BUTTON (Mobile Only) */}
@@ -159,10 +158,11 @@ export default function Header() {
               className="mt-10"
             >
                <Link 
-                href="https://www.registeredagentsinc.com/business-formation/" 
+                href="/en/blog" 
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="px-10 py-4 bg-[#64FFDA] text-[#020C1B] rounded-full text-xs font-black uppercase tracking-widest"
               >
-                Get Started
+                Intelligence Hub
               </Link>
             </motion.div>
           </motion.div>

@@ -2,8 +2,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image"; // اضافه کردن برای بهینه‌سازی تصاویر
 
-const ACCENT = "#64FFDA"; // سبز-آبی روشن (آکوآ) برای حس آرامش
+const ACCENT = "#64FFDA";
 
 const blogPosts = [
   { title: "Wyoming LLC Guide", slug: "wyoming-llc-guide", category: "Jurisdiction", desc: "The gold standard for privacy and asset protection." },
@@ -31,27 +32,46 @@ const BlogCard = ({ post, index }: { post: any, index: number }) => (
     whileHover={{ y: -10 }}
     className="group"
   >
-    <Link href={`/blog/${post.slug}`}>
-      <div className="bg-[#112240] border border-white/5 rounded-[45px] p-8 h-full flex flex-col justify-between hover:border-[#64FFDA]/40 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] transition-all duration-500 relative overflow-hidden">
-        {/* افکت نوری گوشه کارت */}
-        <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#64FFDA]/5 blur-2xl group-hover:bg-[#64FFDA]/10 transition-all" />
+    <Link href={`/en/blog/${post.slug}`}>
+      <div className="bg-[#112240] border border-white/5 rounded-[30px] h-full flex flex-col overflow-hidden hover:border-[#64FFDA]/40 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] transition-all duration-500 relative">
         
-        <div>
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#64FFDA] mb-4 block">
-            {post.category}
-          </span>
-          <h3 className="text-2xl font-black text-white leading-tight mb-4 group-hover:text-[#64FFDA] transition-colors">
-            {post.title}
-          </h3>
-          <p className="text-sm text-[#8892B0] font-medium italic leading-relaxed">
-            {post.desc}
-          </p>
+        {/* بخش تصویر تامنیل */}
+        <div className="relative h-52 w-full overflow-hidden">
+          <Image
+            src={`/blog/${post.slug}/hero.jpg`} // مسیر داینامیک بر اساس اسلاگ
+            alt={post.title}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-[#020C1B]/20 group-hover:bg-transparent transition-colors duration-500" />
+          
+          {/* لیبل دسته‌بندی روی عکس */}
+          <div className="absolute bottom-4 left-6">
+             <span className="bg-[#64FFDA] text-[#020C1B] px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">
+                {post.category}
+             </span>
+          </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-2">
-          <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Read Intelligence</span>
-          <div className="h-[1px] flex-1 bg-white/10 group-hover:bg-[#64FFDA]/30 transition-all" />
+        {/* بخش محتوا */}
+        <div className="p-8 flex flex-col justify-between flex-1">
+          <div>
+            <h3 className="text-xl font-black text-white leading-tight mb-4 group-hover:text-[#64FFDA] transition-colors">
+              {post.title}
+            </h3>
+            <p className="text-sm text-[#8892B0] font-medium italic leading-relaxed line-clamp-2">
+              {post.desc}
+            </p>
+          </div>
+
+          <div className="mt-8 flex items-center gap-2">
+            <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Read Intelligence</span>
+            <div className="h-[1px] flex-1 bg-white/10 group-hover:bg-[#64FFDA]/30 transition-all" />
+          </div>
         </div>
+
+        {/* افکت نوری */}
+        <div className="absolute -top-10 -right-10 w-24 h-24 bg-[#64FFDA]/5 blur-2xl group-hover:bg-[#64FFDA]/10 transition-all" />
       </div>
     </Link>
   </motion.div>
@@ -61,14 +81,12 @@ export default function BlogHome() {
   return (
     <div className="min-h-screen bg-[#020C1B] text-[#CCD6F6] pt-40 pb-20 px-6 relative">
       
-      {/* زمینه ستاره‌ای */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="stars-field" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* هدر بخش بلاگ */}
         <div className="mb-24">
           <motion.h1 
             initial={{ opacity: 0, x: -20 }}
@@ -82,7 +100,6 @@ export default function BlogHome() {
           </p>
         </div>
 
-        {/* گرید بلاگ‌ها */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, i) => (
             <BlogCard key={i} post={post} index={i} />

@@ -2,26 +2,22 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-
-// رنگ‌بندی جدید برای حس اعتماد و آرامش
-const PRIMARY = "#0A192F"; // سرمه‌ای عمیق
-const ACCENT = "#64FFDA"; // سبز-آبی روشن برای حس تکنولوژی
-const SOFT_BLUE = "#E6F1FF"; // آبی بسیار ملایم برای متن
+import { Zap, Globe, ShieldCheck, Banknote, ChevronRight, BookOpen, Rocket, Star } from "lucide-react";
 
 const ServiceButton = ({ title, href, delay }: { title: string, href: string, delay: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay }}
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="relative"
+    transition={{ delay, duration: 0.5 }}
+    whileHover={{ y: -5 }}
   >
     <Link 
       href={href} 
       target="_blank"
-      className="block px-6 py-8 bg-white/5 backdrop-blur-md border border-white/10 rounded-[40px] text-center shadow-[0_10px_30px_-15px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:border-[#64FFDA]/50 transition-all duration-500 group"
+      className="block px-6 py-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[40px] text-center hover:border-[#64FFDA]/40 hover:bg-white/10 transition-all duration-500 group relative overflow-hidden"
     >
-      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#CCD6F6] group-hover:text-[#64FFDA]">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#64FFDA]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.3em] text-[#CCD6F6] group-hover:text-[#64FFDA] transition-colors">
         {title}
       </span>
     </Link>
@@ -30,8 +26,8 @@ const ServiceButton = ({ title, href, delay }: { title: string, href: string, de
 
 const allStateNames = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
 
-export default function S4HEL_Trust_Edition() {
-  const [selectedState, setSelectedState] = useState<string | null>(null);
+export default function S4HEL_Service_Hub() {
+  const [selectedState, setSelectedState] = useState<string | null>("Massachusetts");
 
   const mainServices = [
     { t: "Domain Name", l: "https://www.registeredagentsinc.com/domain-name/" },
@@ -49,115 +45,145 @@ export default function S4HEL_Trust_Edition() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020c1b] text-[#8892b0] pt-40 pb-20 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020c1b] text-[#8892b0] pt-32 pb-20 px-6 relative overflow-hidden selection:bg-[#64FFDA]/30">
       
-      {/* پس‌زمینه ستاره‌ای (Star Field) */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <div className="stars-container" />
+      {/* Background Decor */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#64FFDA]/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 blur-[100px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* هدر صفحه */}
-        <div className="text-center mb-32">
-          <motion.h1 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }}
-            className="text-6xl md:text-8xl font-black text-[#64FFDA] mb-6 tracking-tight"
+        {/* --- SECTION 1: ABOUT US (Educational Intro) --- */}
+        <section className="text-center mb-32 space-y-8">
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="flex justify-center gap-1 mb-4"
           >
-            S4HEL <span className="text-white font-light">Service Hub</span>
-          </motion.h1>
-          <p className="text-[#8892b0] text-lg max-w-2xl mx-auto font-medium leading-relaxed">
-            Premium corporate solutions tailored for international visionaries. Secure, efficient, and reliable.
-          </p>
-        </div>
-        
-        {/* دکمه‌های خدمات (Glassmorphism) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-48">
-          {mainServices.map((service, i) => (
-            <ServiceButton key={i} title={service.t} href={service.l} delay={i * 0.05} />
-          ))}
-        </div>
+            {[1,2,3,4,5].map(i => <Star key={i} size={14} className="text-[#64FFDA] fill-[#64FFDA]" />)}
+          </motion.div>
 
-        {/* گرید ایالت‌ها با طراحی دایره‌ای */}
-        <div className="mb-24">
-          <h2 className="text-center text-3xl font-bold text-white mb-12 uppercase tracking-widest">Select Your Jurisdiction</h2>
-          <div className="flex flex-wrap justify-center gap-3">
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+            className="text-5xl md:text-8xl font-black text-white tracking-tighter uppercase italic"
+          >
+            S4<span className="text-[#64FFDA]">HEL</span> <span className="font-thin opacity-30 text-3xl md:text-6xl not-italic">EDUCATION</span>
+          </motion.h1>
+
+          <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 backdrop-blur-md p-8 md:p-12 rounded-[50px] shadow-2xl">
+            <h2 className="text-[#64FFDA] font-black uppercase tracking-[0.4em] text-xs mb-6 flex items-center justify-center gap-2">
+              <BookOpen size={16}/> Your Strategic Business Guide
+            </h2>
+            <p className="text-[#CCD6F6] text-xl md:text-2xl font-medium leading-relaxed italic">
+              S4HEL is an advanced educational ecosystem designed for global entrepreneurs. 
+              We don't just provide links; we provide the <span className="text-[#64FFDA]">foundational intelligence</span> required to launch, 
+              manage, and scale online businesses in the United States and beyond.
+            </p>
+          </div>
+        </section>
+
+        {/* --- SECTION 2: SERVICES MATRIX --- */}
+        <section className="mb-48">
+          <h2 className="text-center text-white font-black uppercase text-[10px] tracking-[0.6em] mb-12 opacity-40">Operational Infrastructure</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {mainServices.map((service, i) => (
+              <ServiceButton key={service.t} title={service.t} href={service.l} delay={i * 0.05} />
+            ))}
+          </div>
+        </section>
+
+        {/* --- SECTION 3: STATE SELECTION (Overlap Fix Applied) --- */}
+        <section className="mb-16">
+          <h2 className="text-center text-white font-black uppercase text-[10px] tracking-[0.6em] mb-12 opacity-60 italic flex items-center justify-center gap-3">
+            <Rocket size={14}/> Select Jurisdiction
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
             {allStateNames.map((state) => (
-              <motion.button
+              <button
                 key={state}
                 onClick={() => setSelectedState(state)}
-                whileHover={{ scale: 1.1, backgroundColor: "#64FFDA", color: "#020c1b" }}
-                className={`px-5 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
-                  selectedState === state ? 'bg-[#64FFDA] text-[#020c1b] shadow-[0_0_20px_#64FFDA]' : 'bg-white/5'
+                className={`px-5 py-2.5 rounded-full border text-[9px] font-black uppercase tracking-widest transition-all duration-300 ${
+                  selectedState === state 
+                  ? 'bg-[#64FFDA] text-[#020c1b] border-[#64FFDA] shadow-[0_0_20px_rgba(100,255,218,0.5)] scale-110' 
+                  : 'bg-white/5 border-white/10 text-[#CCD6F6] hover:border-[#64FFDA]/50'
                 }`}
               >
                 {state}
-              </motion.button>
+              </button>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* پنل جزئیات ایالت */}
-        <AnimatePresence mode="wait">
-          {selectedState && (
-            <motion.div
-              key={selectedState}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.1 }}
-              className="bg-[#112240] border border-white/10 rounded-[50px] p-12 md:p-24 shadow-2xl relative overflow-hidden"
-            >
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#64FFDA]/10 blur-[120px] rounded-full" />
-              
-              <div className="relative z-10 flex flex-col md:flex-row gap-16 items-center">
-                <div className="md:w-1/2">
-                  <h3 className="text-7xl md:text-9xl font-black text-white mb-8">{selectedState}</h3>
-                  <p className="text-xl leading-relaxed font-light text-[#8892b0]">
-                    Elevate your business in <span className="text-[#64FFDA]">{selectedState}</span>. Experience a jurisdiction that prioritizes legal integrity, global accessibility, and superior corporate flexibility.
-                  </p>
-                </div>
-                
-                <div className="md:w-1/2 w-full">
-                  <div className="bg-[#0a192f] p-10 rounded-[40px] border border-white/5 space-y-6">
-                    {["Maximum Asset Protection", "Global Credibility", "Zero Personal Liability", "Fast US Banking Setup"].map((p) => (
-                      <div key={p} className="flex items-center gap-4">
-                        <div className="w-2 h-2 bg-[#64FFDA] rounded-full shadow-[0_0_10px_#64FFDA]" />
-                        <span className="text-sm font-bold text-white uppercase tracking-widest">{p}</span>
+        {/* --- SECTION 4: DETAILS PANEL (The "Big Name" Fix) --- */}
+        <div className="relative min-h-[600px] mt-10">
+            <AnimatePresence mode="wait">
+            {selectedState && (
+                <motion.div
+                  key={selectedState}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 30 }}
+                  className="bg-[#112240]/40 backdrop-blur-3xl border border-white/10 rounded-[60px] p-8 md:p-20 shadow-3xl overflow-hidden"
+                >
+                <div className="flex flex-col xl:flex-row gap-12 items-center">
+                    
+                    {/* LEFT SIDE: Name and Description (Auto-Sizing Font) */}
+                    <div className="xl:w-2/3 w-full space-y-8 text-center xl:text-left z-10">
+                        <h3 className={`font-black text-white tracking-tighter italic uppercase leading-none break-words
+                            ${selectedState.length > 12 ? 'text-5xl md:text-8xl' : 'text-7xl md:text-[130px]'}
+                        `}>
+                            {selectedState}
+                        </h3>
+                        <p className="text-xl md:text-2xl leading-relaxed text-[#8892b0] font-medium italic max-w-2xl">
+                            Establish your legacy in <span className="text-[#64FFDA] font-black">{selectedState}</span>. 
+                            A premier choice for entrepreneurs seeking privacy, international credibility, and tax efficiency.
+                        </p>
+                    </div>
+
+                    {/* RIGHT SIDE: Feature Box (Avoids Overlap) */}
+                    <div className="xl:w-1/3 w-full relative z-20">
+                      <div className="bg-[#0a192f]/80 backdrop-blur-md p-10 rounded-[40px] border border-white/10 shadow-2xl space-y-6">
+                          {[
+                            { icon: ShieldCheck, text: "Elite Asset Protection" },
+                            { icon: Globe, text: "Global Credibility" },
+                            { icon: Zap, text: "Zero Personal Liability" },
+                            { icon: Banknote, text: "Rapid Banking Access" }
+                          ].map((item, idx) => (
+                            <div key={idx} className="flex items-center gap-4 group">
+                                <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-[#64FFDA]">
+                                <item.icon size={18} />
+                                </div>
+                                <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">{item.text}</span>
+                            </div>
+                          ))}
+                          
+                          <Link 
+                            href="https://www.registeredagentsinc.com/business-formation/" 
+                            target="_blank"
+                            className="flex items-center justify-center gap-3 mt-10 py-7 bg-[#64FFDA] text-[#020c1b] rounded-full font-black uppercase tracking-[0.4em] text-[10px] hover:shadow-[0_0_40px_rgba(100,255,218,0.6)] hover:scale-[1.05] transition-all"
+                          >
+                            Initialize Formation <ChevronRight size={16} />
+                          </Link>
                       </div>
-                    ))}
-                    <Link 
-                      href="https://www.registeredagentsinc.com/business-formation/" 
-                      target="_blank"
-                      className="block text-center mt-10 py-6 bg-[#64FFDA] text-[#020c1b] rounded-full font-black uppercase tracking-[0.3em] hover:shadow-[0_0_30px_rgba(100,255,218,0.5)] transition-all"
-                    >
-                      Start Formation
-                    </Link>
-                  </div>
+                    </div>
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                </motion.div>
+            )}
+            </AnimatePresence>
+        </div>
       </div>
 
       <style jsx global>{`
-        .stars-container {
-          position: fixed;
-          top: 0; left: 0;
-          width: 100%; height: 100%;
-          background-image: 
-            radial-gradient(1px 1px at 25px 35px, white, rgba(0,0,0,0)),
-            radial-gradient(1.5px 1.5px at 50px 100px, #64FFDA, rgba(0,0,0,0)),
-            radial-gradient(1px 1px at 90px 40px, white, rgba(0,0,0,0));
-          background-size: 150px 150px;
-          animation: moveStars 150s linear infinite;
-        }
-        @keyframes moveStars {
-          from { transform: translateY(0); }
-          to { transform: translateY(-1000px); }
+        body { background-color: #020c1b; margin: 0; padding: 0; }
+        .stars-background {
+          position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.1;
+          background-image: radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+                            radial-gradient(1.5px 1.5px at 100px 100px, #64FFDA, rgba(0,0,0,0));
+          background-size: 200px 200px;
         }
       `}</style>
+      <div className="stars-background" />
     </div>
   );
 }
