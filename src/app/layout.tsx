@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@/app/globals.css";
+import Script from "next/script"; // ۱. این ایمپورت را اضافه کنید
 
 export default function LocaleLayout({
   children,
@@ -12,9 +13,17 @@ export default function LocaleLayout({
 }) {
   return (
     <html lang={locale} dir={locale === 'fa' ? 'rtl' : 'ltr'}>
+      <head>
+        {/* ۲. کد گوگل ادسنس را اینجا قرار دهید */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2430648749257681"
+          crossOrigin="anonymous"
+          strategy="afterInteractive" 
+        />
+      </head>
       <body className="antialiased bg-[#020C1B]">
         <Header />
-        {/* استفاده از min-h-screen باعث می‌شود فوتر همیشه در انتهای صفحه بماند */}
         <main className="min-h-screen">
           {children}
         </main>
