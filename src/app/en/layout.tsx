@@ -1,17 +1,24 @@
-// مسیر: app/[locale]/layout.tsx
+// مسیر: src/app/[locale]/layout.tsx
 import { ReactNode } from "react";
-// هدر و فوتر را از اینجا حذف می‌کنیم چون در لایوت اصلی وجود دارند
 import "@/app/globals.css";
 
-export default function LanguageLayout({ children }: { children: ReactNode }) {
+interface LanguageLayoutProps {
+  children: ReactNode;
+  params: Promise<{ locale: string }>; // تغییر تایپ به Promise
+}
+
+export default async function LanguageLayout({ children, params }: LanguageLayoutProps) {
+  // استفاده از await برای باز کردن params
+  const { locale } = await params;
+  const currentLocale = locale || "en";
+
   return (
-    <>
-      {/* تگ <section> یا یک Fragment ساده کافی است.
-          هدر و فوتر را از اینجا پاک کردیم تا با لایوت اصلی تداخل نکند.
-      */}
-      <main>
-        {children}
-      </main>
-    </>
+    <html lang={currentLocale}>
+      <body className="bg-[#020C1B] antialiased selection:bg-[#64FFDA]/30">
+        <main>
+          {children}
+        </main>
+      </body>
+    </html>
   );
 }

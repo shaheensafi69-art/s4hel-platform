@@ -1,17 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ChevronDown, Globe, Menu, X } from "lucide-react";
+import { ChevronDown, Globe, Menu, X, GraduationCap, Trophy, ArrowRight } from "lucide-react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -19,159 +17,123 @@ export default function Header() {
 
   const navLinks = [
     { name: "Home", href: "/en" },
-    { name: "Services", href: "/en/services" },
+    { name: "Articles", href: "/en/articles" },
     { name: "About", href: "/en/about" },
     { name: "Contact", href: "/en/contact" },
   ];
 
-  const languages = [
-    { name: "English", code: "EN", flag: "🇺🇸", active: true },
-    { name: "Deutsch", code: "DE", flag: "🇩🇪", active: false },
-    { name: "Français", code: "FR", flag: "🇫🇷", active: false },
-    { name: "Русский", code: "RU", flag: "🇷🇺", active: false },
-  ];
-
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-        isScrolled 
-          ? "bg-[#020C1B]/90 backdrop-blur-2xl border-b border-white/5 py-4 shadow-[0_10px_30px_-10px_rgba(2,12,27,0.7)]" 
-          : "bg-transparent py-10"
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-[#020C1B]/80 backdrop-blur-xl border-b border-white/10 py-3 shadow-2xl"
+          : "bg-transparent py-6 lg:py-8"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         
-        {/* LOGO */}
-        <Link href="/en" className="group z-50">
-          <motion.span 
-            className="text-2xl lg:text-3xl font-black italic tracking-tighter text-white group-hover:text-[#64FFDA] transition-all duration-500"
-          >
-            S4HEL<span className="text-[#64FFDA]">.</span>
-          </motion.span>
+        {/* BRAND LOGO */}
+        <Link href="/en" className="group flex items-center gap-2 relative z-50">
+          <div className="flex flex-col">
+            <span className="text-2xl lg:text-3xl font-black italic tracking-tighter text-white group-hover:text-[#64FFDA] transition-all duration-300">
+              S4<span className="text-[#64FFDA]">HEL</span>
+            </span>
+            <span className="text-[8px] font-mono tracking-[0.4em] text-[#8892B0] uppercase -mt-1 group-hover:text-white transition-colors">
+              University
+            </span>
+          </div>
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
+        {/* CENTER NAVIGATION */}
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
+            <Link
+              key={link.name}
               href={link.href}
-              className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8892B0] hover:text-[#64FFDA] transition-all duration-300 relative group"
+              className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#8892B0] hover:text-[#64FFDA] transition-all duration-300 relative group"
             >
               {link.name}
-              <span className="absolute -bottom-2 left-0 w-0 h-[1.5px] bg-[#64FFDA] group-hover:w-full transition-all duration-500 shadow-[0_0_10px_#64FFDA]" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#64FFDA] transition-all duration-300 group-hover:w-full shadow-[0_0_10px_#64FFDA]" />
             </Link>
           ))}
         </nav>
 
         {/* RIGHT SIDE ACTIONS */}
-        <div className="flex items-center gap-3 lg:gap-5">
+        <div className="flex items-center gap-3 relative z-50">
           
-          {/* LANGUAGE (Desktop Only) */}
-          <div className="relative hidden md:block">
-            <button 
-              onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-2 px-3 py-2 text-[10px] font-bold text-[#8892B0] hover:text-[#64FFDA] transition-colors"
-            >
-              <Globe size={14} className="text-[#64FFDA]" />
-              <span>EN</span>
-              <ChevronDown size={12} className={`transition-transform ${isLangOpen ? 'rotate-180' : ''}`} />
-            </button>
-
-            <AnimatePresence>
-              {isLangOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute right-0 mt-4 w-48 bg-[#0A192F] border border-white/10 rounded-xl p-2 shadow-2xl backdrop-blur-xl"
-                >
-                  {languages.map((lang) => (
-                    <div 
-                      key={lang.code}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition-all ${
-                        lang.active ? "bg-[#64FFDA]/10 text-[#64FFDA]" : "opacity-40 cursor-not-allowed"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span>{lang.flag}</span>
-                        <span className="text-[11px] font-bold">{lang.name}</span>
-                      </div>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* INTELLIGENCE HUB (Desktop Only) */}
-          <Link 
-            href="/en/blog" 
-            className="hidden sm:block px-6 lg:px-8 py-3 bg-[#64FFDA] text-[#020C1B] rounded-full text-[10px] font-black uppercase tracking-widest shadow-[0_10px_20px_-5px_rgba(100,255,218,0.3)] hover:shadow-[0_0_30px_rgba(100,255,218,0.5)] transition-all duration-500"
+          {/* VICTORIES BUTTON - GLASS STYLE */}
+          <Link
+            href="/en/victories"
+            className="hidden xl:flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-[#64FFDA]/10 hover:border-[#64FFDA]/30 text-white hover:text-[#64FFDA] text-[10px] font-black uppercase tracking-widest transition-all duration-300 group"
           >
-            Intelligence Hub
+            <Trophy size={14} className="group-hover:rotate-12 transition-transform" />
+            Victories
           </Link>
 
-          {/* HAMBURGER BUTTON (Mobile Only) */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden z-50 p-2 text-[#64FFDA]"
+          {/* ACADEMY BUTTON - GLASS STYLE */}
+          <Link
+            href="/en/academy"
+            className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-[#64FFDA]/10 hover:border-[#64FFDA]/30 text-white hover:text-[#64FFDA] text-[10px] font-black uppercase tracking-widest transition-all duration-300 group"
           >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            <GraduationCap size={16} className="group-hover:-rotate-12 transition-transform" />
+            Academy
+          </Link>
+
+          {/* BLOG BUTTON - SOLID GLOW STYLE */}
+          <Link
+            href="/en/blog"
+            className="hidden md:flex items-center gap-2 px-7 py-2.5 bg-[#64FFDA] text-[#020C1B] rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-white hover:shadow-[0_0_25px_rgba(100,255,218,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95"
+          >
+            Blog Hub
+            <ArrowRight size={14} />
+          </Link>
+
+          {/* MOBILE MENU TOGGLE */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2.5 text-[#64FFDA] hover:bg-white/5 rounded-full transition-all border border-[#64FFDA]/20"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* MOBILE MENU OVERLAY */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-[#020C1B] z-40 lg:hidden flex flex-col justify-center items-center gap-8"
+      {/* MOBILE OVERLAY MENU */}
+      <div
+        className={`fixed inset-0 bg-[#020C1B] z-40 lg:hidden flex flex-col justify-center items-center gap-8 transition-all duration-700 ease-in-out ${
+          isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+        }`}
+      >
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
+        
+        {navLinks.map((link, i) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-2xl font-black uppercase italic tracking-widest text-white hover:text-[#64FFDA] transition-all transform hover:scale-110"
           >
-            {navLinks.map((link, i) => (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                key={link.name}
-              >
-                <Link
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-bold uppercase tracking-widest text-[#8892B0] hover:text-[#64FFDA] transition-all"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-            
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              transition={{ delay: 0.5 }}
-              className="mt-10"
-            >
-               <Link 
-                href="/en/blog" 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="px-10 py-4 bg-[#64FFDA] text-[#020C1B] rounded-full text-xs font-black uppercase tracking-widest"
-              >
-                Intelligence Hub
-              </Link>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {!isScrolled && (
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      )}
-    </motion.header>
+            {link.name}
+          </Link>
+        ))}
+        
+        <div className="flex flex-col gap-4 w-full px-12 mt-10">
+          <Link
+            href="/en/victories"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center gap-3 p-4 border border-[#64FFDA]/30 rounded-2xl text-[#64FFDA] font-black uppercase tracking-widest"
+          >
+            <Trophy size={18} /> Global Victories
+          </Link>
+          <Link
+            href="/en/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center justify-center gap-3 p-4 bg-[#64FFDA] text-[#020C1B] rounded-2xl font-black uppercase tracking-widest shadow-[0_10px_30px_rgba(100,255,218,0.3)]"
+          >
+            Enter Blog Hub
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 }

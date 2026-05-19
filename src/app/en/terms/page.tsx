@@ -1,40 +1,50 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { FileText, Scale, Zap, Gavel, ChevronLeft, AlertCircle } from "lucide-react";
+import { FileText, Scale, Zap, Gavel, ChevronLeft, AlertCircle, Info, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 export default function TermsOfService() {
-  const lastUpdated = "March 16, 2026";
+  const lastUpdated = "May 19, 2026";
 
   const terms = [
     {
-      title: "1. Executive Agreement",
-      icon: <Scale size={20} />,
-      content: "By accessing S4HEL, you enter into a strategic agreement to utilize our US-based infrastructure for educational and formation purposes. You confirm that all business intent provided is lawful and aligned with international financial standards."
+      title: "1. Acceptance of Terms",
+      icon: <Scale size={18} />,
+      content: "By accessing and interacting with the platforms, educational frameworks, and digital interfaces of S4HEL Online University, you formally agree to be bound by these Terms of Service, all applicable United States federal laws, and local state regulations. If you do not concur with any section of these terms, you are legally restricted from utilizing our online hub resources."
     },
     {
-      title: "2. Scope of Intelligence",
-      icon: <Zap size={20} />,
-      content: "S4HEL provides strategic guidance and assistance for LLC formation and digital banking architectures. We are an intelligence hub; while we engineer the bridge to the US market, the final operational management of the business remains with the founder."
+      title: "2. Educational Scope and Financial Disclaimer",
+      icon: <Zap size={18} />,
+      content: "S4HEL functions exclusively as an independent corporate research and academic intelligence hub. The content, articles, and guides provided are intended solely for educational and informational purposes. S4HEL is not a law firm, a financial institution, or an official certified public accounting provider. No materials hosted on this node constitute binding legal or financial advice."
     },
     {
-      title: "3. Compliance & Jurisdictional Authority",
-      icon: <Gavel size={20} />,
-      content: "All services are governed by the laws of the State of Montana, USA. Any disputes or legal inquiries shall be resolved under the jurisdiction of the courts in Kalispell, Montana, ensuring a transparent and structured legal process."
+      title: "3. Permitted Intellectual Use and Limitations",
+      icon: <FileText size={18} />,
+      content: "All proprietary methodologies, publication layout systems, core design matrix assets, and analysis archives hosted on S4HEL are the exclusive intellectual property of S4HEL LLC. Users are granted a limited, non-exclusive, non-transferable license to access our educational content for individual research. Reproduction or extraction of our frameworks for corporate distribution is strictly prohibited."
     },
     {
-      title: "4. Intellectual Property",
-      icon: <FileText size={20} />,
-      content: "The S4HEL brand, its proprietary 'Elite' design systems, and educational methodologies are the exclusive intellectual property of S4HEL. Unauthorized replication of our strategic frameworks is strictly prohibited."
+      title: "4. User Compliance and Lawful Intent",
+      icon: <ShieldCheck size={18} />,
+      content: "As a user, you warrant that all information provided during newsletter enrollment, database interaction, or query dispatch is completely accurate. You agree not to utilize our infrastructure to deploy malicious code, disrupt digital banking telemetry tracking networks, or simulate unlawful business formation intent within any global jurisdiction."
+    },
+    {
+      title: "5. Limitation of Liability",
+      icon: <AlertCircle size={18} />,
+      content: "In no scenario shall S4HEL LLC, its directors, or partners be held accountable for any indirect, consequential, or accidental losses arising from the utilization or inability to utilize our research guides, structural corporate tools, or affiliate links. The final legal configuration and management of any commercial entity remain the absolute responsibility of the founder."
+    },
+    {
+      title: "6. Governing Law and Governing Jurisdiction",
+      icon: <Gavel size={18} />,
+      content: "These statutory provisions are constructed, executed, and interpreted in full accordance with the laws of the State of Montana, United States. Any formal legal disputes, mediation routines, or structural corporate claims concerning S4HEL LLC must be initiated exclusively within the state and federal courts located in Kalispell, Montana, USA."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#020C1B] text-[#8892B0] pt-40 pb-20 px-6 font-sans selection:bg-[#64FFDA] selection:text-[#020C1B]">
+    <div className="min-h-screen bg-[#020C1B] text-[#8892B0] pt-40 pb-20 px-6 font-sans selection:bg-[#64FFDA] selection:text-[#020C1B] relative overflow-hidden">
       
       {/* Background Radial Glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#64FFDA]/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#64FFDA]/5 blur-[150px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         
@@ -46,64 +56,71 @@ export default function TermsOfService() {
         </motion.div>
 
         {/* Header Section */}
-        <div className="mb-24">
+        <div className="mb-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter mb-8 italic leading-none"
+            className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6 italic leading-none"
           >
             Terms of <br /> <span className="text-[#64FFDA]">Service</span>
           </motion.h1>
-          <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.4em]">
-            <span className="text-white/40">Protocol:</span>
-            <span className="text-white">Active Engagement</span>
-            <span className="text-white/20">|</span>
-            <span className="text-white/40">Revision: {lastUpdated}</span>
+          <div className="flex flex-wrap items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em]">
+            <span className="text-white/40">Status:</span>
+            <span className="text-[#64FFDA] bg-[#64FFDA]/10 px-3 py-1 rounded-md border border-[#64FFDA]/20">Active & Enforceable</span>
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <span className="text-white/40">Last Revised: {lastUpdated}</span>
           </div>
         </div>
 
         {/* Terms Content - Glassmorphism Card */}
-        <div className="bg-[#112240]/40 border border-white/5 rounded-[60px] p-10 md:p-20 backdrop-blur-3xl shadow-3xl relative overflow-hidden">
+        <div className="bg-white/[0.01] border border-white/5 rounded-3xl p-6 md:p-16 backdrop-blur-3xl shadow-2xl relative overflow-hidden">
           {/* Subtle Decorative Icon */}
-          <AlertCircle className="absolute -top-10 -right-10 text-white/[0.02]" size={300} />
+          <AlertCircle className="absolute -top-10 -right-10 text-white/[0.01] pointer-events-none" size={300} />
           
-          <div className="space-y-16 relative z-10">
+          <div className="space-y-12 relative z-10">
             {terms.map((term, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
                 className="group"
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-[#64FFDA]/10 flex items-center justify-center text-[#64FFDA] group-hover:bg-[#64FFDA] group-hover:text-[#020C1B] transition-all duration-500">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="text-[#64FFDA] bg-white/5 p-2 rounded-xl group-hover:scale-105 transition-transform">
                     {term.icon}
                   </div>
-                  <h2 className="text-white text-xl font-black uppercase tracking-widest italic">{term.title}</h2>
+                  <h2 className="text-white text-base font-black uppercase tracking-wider">{term.title}</h2>
                 </div>
-                <p className="text-[#8892B0] text-lg leading-relaxed font-medium italic opacity-80 border-l-2 border-[#64FFDA]/20 pl-8">
+                <p className="text-[#8892B0] text-xs md:text-[13px] leading-relaxed font-medium opacity-80 border-l border-white/5 pl-6 ml-4">
                   {term.content}
                 </p>
               </motion.div>
             ))}
 
-            <div className="pt-12 border-t border-white/5 space-y-4">
-              <h3 className="text-[#64FFDA] text-xs font-black uppercase tracking-[0.5em]">Executive Jurisdiction</h3>
-              <p className="text-white/60 font-medium italic text-sm leading-loose">
-                S4HEL Operations Hub <br />
+            {/* Corporate Address Footer Information */}
+            <div className="pt-10 border-t border-white/5 ml-4 space-y-3">
+              <h3 className="text-[#64FFDA] text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
+                <Info size={12} /> Corporate Governance Identity
+              </h3>
+              <p className="text-white font-bold text-base font-mono leading-none">
+                S4HEL LLC
+              </p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 leading-normal font-mono">
                 1001 S Main St Ste 500, Kalispell <br />
-                Montana 59901, United States
+                Montana 59901, United States <br />
+                Inquiries: legal@s4hel.com
               </p>
             </div>
           </div>
         </div>
 
         {/* Final Legal Footer Note */}
-        <div className="mt-20 flex flex-col items-center text-center">
-          <div className="w-20 h-[1px] bg-white/10 mb-8" />
-          <p className="text-[10px] text-[#495670] uppercase tracking-[0.4em] leading-loose max-w-2xl">
-            By proceeding with our services, you acknowledge that you have read and understood the tactical requirements of these terms. S4HEL reserves the right to update these protocols to maintain global compliance.
+        <div className="mt-12 flex flex-col items-center text-center">
+          <div className="w-16 h-[1px] bg-white/10 mb-6" />
+          <p className="text-[10px] text-[#495670] uppercase tracking-wider leading-relaxed italic max-w-2xl">
+            By proceeding with our institutional research matrices, you comprehensively acknowledge that you understand these governance frameworks. S4HEL reserves the explicit right to adjust these terms to maintain integration velocity with international business networks.
           </p>
         </div>
 
