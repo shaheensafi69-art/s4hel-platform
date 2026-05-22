@@ -409,37 +409,63 @@ export default function S4HEL_Academy_Registration() {
                       </div>
                     </div>
 
-                    {/* Course Selection */}
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-mono tracking-widest uppercase opacity-40 block text-white">Target Learning Stream</label>
-                      <select
-                        value={selectedCourse}
-                        onChange={(e) => setSelectedCourse(e.target.value)}
-                        className="w-full bg-[#0A192F] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#64FFDA]/40 transition-all cursor-pointer"
-                      >
-                        <option value="TikTok Shop Complete Mastery">TikTok Shop Complete Mastery</option>
-                        <option value="Amazon FBA/FBM Global Logistics">Amazon FBA/FBM Global Logistics</option>
-                        <option value="Shopify Enterprise Infrastructure">Shopify Enterprise Infrastructure</option>
-                        <option value="Forex & Crypto Trading Matrix">Forex & Crypto Trading Matrix</option>
-                        <option value="Full-Stack Web & Flutter App Coding">Full-Stack Web & Flutter App Coding</option>
-                        <option value="US LLC Formation & Corporate Identity (VIP)">US LLC Formation & Corporate Identity (VIP)</option>
-                      </select>
-                    </div>
-                  </div>
+                    {/* Course Selection & Pricing Matrix */}
+<div className="space-y-4">
+  <div className="space-y-1.5">
+    <label className="text-[10px] font-mono tracking-widest uppercase opacity-40 block text-white">Target Learning Stream</label>
+    <select
+      value={selectedCourse}
+      onChange={(e) => setSelectedCourse(e.target.value)}
+      className="w-full bg-[#0A192F] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#64FFDA]/40 transition-all cursor-pointer"
+    >
+      <option value="TikTok Shop Complete Mastery">TikTok Shop Complete Mastery</option>
+      <option value="Amazon FBA/FBM Global Logistics">Amazon FBA/FBM Global Logistics</option>
+      <option value="Shopify Enterprise Infrastructure">Shopify Enterprise Infrastructure</option>
+      <option value="Forex & Crypto Trading Matrix">Forex & Crypto Trading Matrix</option>
+      <option value="Full-Stack Web & Flutter App Coding">Full-Stack Web & Flutter App Coding</option>
+      <option value="US LLC Formation & Corporate Identity (VIP)">US LLC Formation & Corporate Identity (VIP)</option>
+    </select>
+  </div>
 
-                  {/* Submit Terminal Trigger */}
-                  <button
-                    type="submit" disabled={isSubmitting}
-                    className="w-full mt-2 py-3.5 bg-[#64FFDA] text-[#020C1B] rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:shadow-[0_4px_20px_rgba(100,255,218,0.3)] flex items-center justify-center gap-2 transition-all disabled:opacity-50"
-                  >
-                    {isSubmitting ? (
-                      <span className="animate-pulse">DISPATCHING TELEGRAM TELEMETRY PIPELINE...</span>
-                    ) : (
-                      <>
-                        Submit & Complete Enrollment <Send size={11} />
-                      </>
-                    )}
-                  </button>
+  {/* Dynamic Price & Duration Box */}
+  <div className="grid grid-cols-2 gap-3 p-4 bg-[#64FFDA]/5 border border-[#64FFDA]/10 rounded-2xl">
+    <div>
+      <span className="text-[9px] font-mono uppercase opacity-50 block">Course Fee</span>
+      <span className="text-sm font-black text-[#64FFDA]">
+        {selectedCourse === "TikTok Shop Complete Mastery" ? "$120" :
+         selectedCourse === "Amazon FBA/FBM Global Logistics" ? "$200" :
+         selectedCourse === "Shopify Enterprise Infrastructure" ? "$180" :
+         selectedCourse === "Forex & Crypto Trading Matrix" ? "$600" :
+         selectedCourse === "Full-Stack Web & Flutter App Coding" ? "$850" : "$350"}
+      </span>
+    </div>
+    <div>
+      <span className="text-[9px] font-mono uppercase opacity-50 block">Duration & Mentorship</span>
+      <span className="text-[11px] font-bold block">
+        {selectedCourse === "TikTok Shop Complete Mastery" ? "1.5 Months | No Mentorship" :
+         selectedCourse === "Amazon FBA/FBM Global Logistics" ? "3 Months + 3 Months Mentorship" :
+         selectedCourse === "Shopify Enterprise Infrastructure" ? "1.5 Months + 2 Months Mentorship" :
+         selectedCourse === "Forex & Crypto Trading Matrix" ? "9 Months + 4 Months Mentorship" :
+         selectedCourse === "Full-Stack Web & Flutter App Coding" ? "2.5 Years Total" : "1.5 Months + 3 Months Mentorship"}
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+
+{/* Submit Terminal Trigger */}
+<button
+  type="submit" disabled={isSubmitting}
+  className="w-full mt-2 py-3.5 bg-[#64FFDA] text-[#020C1B] rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:shadow-[0_4px_20px_rgba(100,255,218,0.3)] flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+>
+  {isSubmitting ? (
+    <span className="animate-pulse">DISPATCHING TELEGRAM TELEMETRY PIPELINE...</span>
+  ) : (
+    <>
+      Submit & Complete Enrollment <Send size={11} />
+    </>
+  )}
+</button>
                 </motion.form>
               )}
 

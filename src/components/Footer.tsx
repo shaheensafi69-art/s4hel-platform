@@ -124,7 +124,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-2 text-[#8892B0] text-[11px] font-mono">
                   <Globe size={12} className="text-[#64FFDA]" />
-                  <span>university.s4hel.com</span>
+                  <span>s4hel.com</span>
                 </li>
               </ul>
             </div>

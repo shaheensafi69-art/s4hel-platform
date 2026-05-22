@@ -60,7 +60,7 @@ export default function S4HEL_Complete_Home() {
 
           <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link href="/en/articles" className="group bg-[#64FFDA] text-[#020c1b] px-10 py-5 rounded-xl font-black uppercase text-[10px] tracking-[0.3em] flex items-center gap-3 hover:bg-white transition-all duration-300 shadow-[0_4px_20px_rgba(100,255,218,0.15)]">
-              Explore US Services <ChevronRight size={14} />
+              Explore US ARTICLES <ChevronRight size={14} />
             </Link>
             <Link href="/en/academy" className="px-10 py-5 rounded-xl text-[#64FFDA] border border-[#64FFDA]/30 hover:bg-[#64FFDA]/10 text-[10px] font-black uppercase tracking-[0.3em] transition-all flex items-center gap-2">
               <GraduationCap size={14} /> Access Academy Hub
