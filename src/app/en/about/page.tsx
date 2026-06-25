@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { 
   BookOpen, ShoppingBag, Award, ShieldCheck, Database, Layers, 
-  Globe, Star, Users, CheckCircle, Code, Landmark, ChevronRight 
+  Globe, Star, Users, CheckCircle, Code, Landmark, ChevronRight, MapPin, Building2 
 } from "lucide-react";
 
 export default function DeepAboutPage() {
@@ -71,6 +71,43 @@ export default function DeepAboutPage() {
       avatar: "/sahel.jpeg",
       icon: <Landmark size={22} className="text-[#64FFDA]" />,
       desc: "The absolute legal foundation of out-of-state operations. Step-by-step masterclasses on LLC registration (WY, DE, NM), USPTO Trademark filing, Registered Agent vetting, corporate banking setups (Mercury, Relay), operational US phone/hosting assets, and professional corporate email deployment."
+    }
+  ];
+
+  // --- NEW: TEAM MEMBERS FOR LARGE IMAGE SECTION ---
+  const coreTeamMembers = [
+    {
+      name: "Nik Mohammad Sarwari",
+      title: "Lead Marketing & Acquisition Strategist, Real Estate Division",
+      photo: "nikm.jpeg", // Using the prompt-specified image
+      email: "shernoor437@gmail.com",
+      company: "Sarwari Trade LLC",
+      address: "1001 S MAIN ST STE 500, Kalispell, Montana, 59901, USA",
+      details: [
+        "Marketing & Lead Generation Architect",
+        "Strategic Acquisition Support Services",
+        "Real Estate Investment Portfolio Management",
+        "Corporate Wholesaling Activities Lead"
+      ],
+      description: "Nik provides critical operational support, driving market presence and lead pipeline generation for the company's real estate investment and wholesaling ventures. He navigates complex acquisition strategies with data-driven precision."
+    },
+    {
+      name: "Sahel Salem",
+      title: "University Director & Strategic Compliance Officer",
+      photo: "/sahel.jpeg",
+      description: "Sahel masterminds the academic vision, ensuring global educational content is perfectly mapped to corporate legal frameworks and advanced tax strategies."
+    },
+    {
+      name: "Shaheen Safi",
+      title: "Global E-Commerce Architect & Software Engineer",
+      photo: "/shaheen.jpeg",
+      description: "Shaheen designs and builds the digital network infrastructure that empowers borderless commerce, from high-tier Private Label Shopify systems to complex AI-driven API platforms."
+    },
+    {
+      name: "Mujtaba Rahmani",
+      title: "Head of Global Financial Intelligence & Advanced Market Structure",
+      photo: "/mujtaba.jpeg",
+      description: "Mujtaba decodes advanced market delivery models across Forex, Crypto, and Commodities, providing students with a deep, institutional-level understanding of global finance."
     }
   ];
 
@@ -149,6 +186,88 @@ export default function DeepAboutPage() {
                   </div>
                   <div className="text-[9px] font-mono tracking-wider text-[#64FFDA] bg-[#64FFDA]/5 px-2 py-1 rounded border border-[#64FFDA]/10 uppercase">
                     ACTIVE MAPPED
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* --- SECTION 2.5: CORE OPERATIONAL LEADERSHIP --- */}
+        <section className="space-y-16">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <Users size={32} className="text-[#64FFDA] mx-auto opacity-70" />
+            <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Our Core Operational Team</h2>
+            <p className="text-[#8892B0] text-sm md:text-base leading-relaxed italic font-medium opacity-90">
+              Meet the architects of our sovereign systems, combining marketing mastery, financial intelligence, and legal precision to drive global success.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {coreTeamMembers.map((member, idx) => (
+              <div
+                key={idx}
+                className={`p-8 md:p-10 bg-white/[0.01] border ${member.name.startsWith('Nik') ? 'border-[#64FFDA]/30' : 'border-white/5'} rounded-3xl hover:border-[#64FFDA]/30 transition-all duration-300 group shadow-2xl relative overflow-hidden flex flex-col md:flex-row gap-8`}
+              >
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                {/* Large Profile Photo */}
+                <div className="w-full md:w-60 h-80 md:h-96 rounded-2xl border border-white/10 overflow-hidden shrink-0 group-hover:scale-[1.02] transition-transform shadow-lg relative">
+                  <img 
+                    src={member.photo} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/[0.02] pointer-events-none" />
+                </div>
+
+                <div className="flex flex-col flex-grow space-y-6">
+                  <div className="space-y-3">
+                    <span className={`text-[#64FFDA] font-mono text-[9px] tracking-[0.4em] uppercase block`}>
+                      {member.title.split(',')[1]?.trim() || "GLOBAL STRATEGIST"}
+                    </span>
+                    <h3 className="text-3xl font-black text-white uppercase tracking-tight group-hover:text-[#64FFDA] transition-colors leading-none">
+                      {member.name}
+                    </h3>
+                    <h4 className="text-white text-xs font-bold uppercase tracking-wider opacity-80 pt-1">
+                      {member.title.split(',')[0]}
+                    </h4>
+                  </div>
+                  
+                  <p className="text-[#8892B0] text-sm leading-relaxed italic opacity-95">
+                    {member.description}
+                  </p>
+
+                  {/* Specialized Skill/Detail Block */}
+                  {member.details && (
+                    <div className="pt-6 border-t border-white/5 space-y-2">
+                      <h5 className="text-[#64FFDA] text-[10px] font-black font-mono tracking-widest uppercase">Key Operational Mandate</h5>
+                      {member.details.map((detail, idx2) => (
+                        <div key={idx2} className="flex items-center gap-2.5 text-[#8892B0] text-xs leading-none italic">
+                          <ChevronRight size={12} className="text-[#64FFDA] shrink-0" /> {detail}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  {/* Integrated Contact/Address Block (for large photos) */}
+                  <div className="mt-auto pt-6 border-t border-white/5 space-y-2.5">
+                    {member.email && (
+                      <div className="flex items-center gap-2 text-[#CCD6F6] text-[11px] leading-none opacity-80 font-medium">
+                        <BookOpen size={14} className="text-[#64FFDA] shrink-0 opacity-50" /> Email: {member.email}
+                      </div>
+                    )}
+                    {member.company && (
+                      <div className="flex items-center gap-2 text-[#CCD6F6] text-[11px] leading-none opacity-80 font-medium italic">
+                        <Building2 size={14} className="text-[#64FFDA] shrink-0 opacity-50" /> Company: {member.company}
+                      </div>
+                    )}
+                    {member.address && (
+                      <div className="flex items-start gap-2 text-[#CCD6F6] text-[11px] leading-relaxed opacity-80 font-medium italic">
+                        <MapPin size={14} className="text-[#64FFDA] shrink-0 opacity-50 mt-0.5" /> Address: {member.address}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
