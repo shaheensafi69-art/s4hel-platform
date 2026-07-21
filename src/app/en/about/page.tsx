@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase"; // مسیر فایل کلاینت سوپابیس خود را چک کنید
 import {
   BookOpen,
   ShoppingBag,
@@ -17,7 +18,42 @@ import {
   Building2,
 } from "lucide-react";
 
+// تعریف تایپ اسکریپت برای اعضای تیم که از دیتابیس می‌آید
+interface TeamMember {
+  id: string;
+  name: string;
+  title: string;
+  image_url: string;
+  description: string;
+  company?: string;
+  email?: string;
+  address?: string;
+  details?: string[];
+}
+
 export default function DeepAboutPage() {
+  // استیت‌های مربوط به دریافت دیتا از دیتابیس
+  const [coreTeamMembers, setCoreTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTeamMembers() {
+      const { data, error } = await supabase
+        .from("team_members")
+        .select("*")
+        .order("order_index", { ascending: true }); // نمایش به ترتیبی که وارد کردیم
+
+      if (error) {
+        console.error("Error fetching team members:", error);
+      } else if (data) {
+        setCoreTeamMembers(data);
+      }
+      setLoading(false);
+    }
+
+    fetchTeamMembers();
+  }, []);
+
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     e.currentTarget.src = "/file.svg";
   };
@@ -85,56 +121,6 @@ export default function DeepAboutPage() {
       avatar: "/sahel.jpeg",
       icon: <Landmark size={22} className="text-[#64FFDA]" />,
       desc: "The absolute legal foundation of out-of-state operations. Step-by-step masterclasses on LLC registration (WY, DE, NM), USPTO Trademark filing, Registered Agent vetting, corporate banking setups (Mercury, Relay), operational US phone/hosting assets, and professional corporate email deployment.",
-    },
-  ];
-
-  const coreTeamMembers = [
-    {
-      name: "Sahel Salem",
-      title: "University Director & Strategic Compliance Officer",
-      photo: "/sahel.jpeg",
-      description: "Sahel masterminds the academic vision, ensuring global educational content is perfectly mapped to corporate legal frameworks and advanced tax strategies.",
-      company: "S4HEL LLC",
-      details: [
-        "TikTok Shop Mastery Architect",
-        "Amazon FBA Logistics Specialist",
-        "Corporate Legal Foundation Lead",
-      ],
-    },
-    {
-      name: "Shaheen Safi",
-      title: "Global E-Commerce Architect & Software Engineer",
-      photo: "/shaheen.jpeg",
-      description: "Shaheen designs and builds the digital network infrastructure that empowers borderless commerce, from high-tier Private Label Shopify systems to complex AI-driven API platforms.",
-      company: "Shaheen Digital Systems",
-      email: "shaheen@shaheendigitalsystems.com",
-      details: [
-        "Shopify Dropshipping Master",
-        "Full-Stack Web Coding Expert",
-        "AI-Driven API Configuration Lead",
-        "Native Mobile App Builder",
-      ],
-    },
-    {
-      name: "Mujtaba Rahmani",
-      title: "Head of Global Financial Intelligence & Advanced Market Structure",
-      photo: "/mujtaba.jpeg",
-      description: "Mujtaba decodes advanced market delivery models across Forex, Crypto, and Commodities, providing students with a deep, institutional-level understanding of global finance.",
-    },
-    {
-      name: "Nik Mohammad Sarwari",
-      title: "Lead Marketing & Acquisition Strategist, Real Estate Division",
-      photo: "/nik.jpg",
-      email: "shernoor437@gmail.com",
-      company: "Sarwari Trade LLC",
-      address: "1001 S MAIN ST STE 500, Kalispell, Montana, 59901, USA",
-      details: [
-        "Marketing & Lead Generation Architect",
-        "Strategic Acquisition Support Services",
-        "Real Estate Investment Portfolio Management",
-        "Corporate Wholesaling Activities Lead",
-      ],
-      description: "Nik provides critical operational support, driving market presence and lead pipeline generation for the company's real estate investment and wholesaling ventures. He navigates complex acquisition strategies with data-driven precision.",
     },
   ];
 
@@ -236,75 +222,83 @@ export default function DeepAboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {coreTeamMembers.map((member, idx) => (
-              <div
-                key={idx}
-                className={`p-8 md:p-10 bg-white/[0.01] border ${member.name.startsWith("Nik") ? "border-[#64FFDA]/30" : "border-white/5"} rounded-3xl hover:border-[#64FFDA]/30 transition-all duration-300 group shadow-2xl relative overflow-hidden flex flex-col md:flex-row gap-8`}
-              >
-                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                <div className="w-full md:w-60 h-80 md:h-96 rounded-2xl border border-white/10 overflow-hidden shrink-0 group-hover:scale-[1.02] transition-transform shadow-lg relative">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
-                    onError={handleImageError}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/[0.02] pointer-events-none" />
-                </div>
-
-                <div className="flex flex-col flex-grow space-y-6">
-                  <div className="space-y-3">
-                    <span className="text-[#64FFDA] font-mono text-[9px] tracking-[0.4em] uppercase block">
-                      {member.title.split(",")[1]?.trim() || "GLOBAL STRATEGIST"}
-                    </span>
-                    <h3 className="text-3xl font-black text-white uppercase tracking-tight group-hover:text-[#64FFDA] transition-colors leading-none">
-                      {member.name}
-                    </h3>
-                    <h4 className="text-white text-xs font-bold uppercase tracking-wider opacity-80 pt-1">
-                      {member.title.split(",")[0]}
-                    </h4>
-                  </div>
-
-                  <p className="text-[#8892B0] text-sm leading-relaxed italic opacity-95">
-                    {member.description}
-                  </p>
-
-                  {member.details && (
-                    <div className="pt-6 border-t border-white/5 space-y-2">
-                      <h5 className="text-[#64FFDA] text-[10px] font-black font-mono tracking-widest uppercase">
-                        Key Operational Mandate
-                      </h5>
-                      {member.details.map((detail, idx2) => (
-                        <div key={idx2} className="flex items-center gap-2.5 text-[#8892B0] text-xs leading-none italic">
-                          <ChevronRight size={12} className="text-[#64FFDA] shrink-0" /> {detail}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="mt-auto pt-6 border-t border-white/5 space-y-2.5">
-                    {member.email && (
-                      <div className="flex items-center gap-2 text-[#CCD6F6] text-[11px] leading-none opacity-80 font-medium">
-                        <BookOpen size={14} className="text-[#64FFDA] shrink-0 opacity-50" /> Email: {member.email}
-                      </div>
-                    )}
-                    {member.company && (
-                      <div className="flex items-center gap-2 text-[#CCD6F6] text-[11px] leading-none opacity-80 font-medium italic">
-                        <Building2 size={14} className="text-[#64FFDA] shrink-0 opacity-50" /> Company: {member.company}
-                      </div>
-                    )}
-                    {member.address && (
-                      <div className="flex items-start gap-2 text-[#CCD6F6] text-[11px] leading-relaxed opacity-80 font-medium italic">
-                        <MapPin size={14} className="text-[#64FFDA] shrink-0 opacity-50 mt-0.5" /> Address: {member.address}
-                      </div>
-                    )}
-                  </div>
-                </div>
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <div className="text-[#64FFDA] animate-pulse font-mono text-sm tracking-widest uppercase">
+                Loading Team Data...
               </div>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {coreTeamMembers.map((member) => (
+                <div
+                  key={member.id}
+                  className={`p-8 md:p-10 bg-white/[0.01] border ${member.name.startsWith("Nik") ? "border-[#64FFDA]/30" : "border-white/5"} rounded-3xl hover:border-[#64FFDA]/30 transition-all duration-300 group shadow-2xl relative overflow-hidden flex flex-col md:flex-row gap-8`}
+                >
+                  <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#64FFDA]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                  <div className="w-full md:w-60 h-80 md:h-96 rounded-2xl border border-white/10 overflow-hidden shrink-0 group-hover:scale-[1.02] transition-transform shadow-lg relative">
+                    <img
+                      src={member.image_url}
+                      alt={member.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                      onError={handleImageError}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/[0.02] pointer-events-none" />
+                  </div>
+
+                  <div className="flex flex-col flex-grow space-y-6">
+                    <div className="space-y-3">
+                      <span className="text-[#64FFDA] font-mono text-[9px] tracking-[0.4em] uppercase block">
+                        {member.title.split(",")[1]?.trim() || "GLOBAL STRATEGIST"}
+                      </span>
+                      <h3 className="text-3xl font-black text-white uppercase tracking-tight group-hover:text-[#64FFDA] transition-colors leading-none">
+                        {member.name}
+                      </h3>
+                      <h4 className="text-white text-xs font-bold uppercase tracking-wider opacity-80 pt-1">
+                        {member.title.split(",")[0]}
+                      </h4>
+                    </div>
+
+                    <p className="text-[#8892B0] text-sm leading-relaxed italic opacity-95">
+                      {member.description}
+                    </p>
+
+                    {member.details && member.details.length > 0 && (
+                      <div className="pt-6 border-t border-white/5 space-y-2">
+                        <h5 className="text-[#64FFDA] text-[10px] font-black font-mono tracking-widest uppercase">
+                          Key Operational Mandate
+                        </h5>
+                        {member.details.map((detail, idx2) => (
+                          <div key={idx2} className="flex items-center gap-2.5 text-[#8892B0] text-xs leading-none italic">
+                            <ChevronRight size={12} className="text-[#64FFDA] shrink-0" /> {detail}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-auto pt-6 border-t border-white/5 space-y-2.5">
+                      {member.email && (
+                        <div className="flex items-center gap-2 text-[#CCD6F6] text-[11px] leading-none opacity-80 font-medium">
+                          <BookOpen size={14} className="text-[#64FFDA] shrink-0 opacity-50" /> Email: {member.email}
+                        </div>
+                      )}
+                      {member.company && (
+                        <div className="flex items-center gap-2 text-[#CCD6F6] text-[11px] leading-none opacity-80 font-medium italic">
+                          <Building2 size={14} className="text-[#64FFDA] shrink-0 opacity-50" /> Company: {member.company}
+                        </div>
+                      )}
+                      {member.address && (
+                        <div className="flex items-start gap-2 text-[#CCD6F6] text-[11px] leading-relaxed opacity-80 font-medium italic">
+                          <MapPin size={14} className="text-[#64FFDA] shrink-0 opacity-50 mt-0.5" /> Address: {member.address}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
