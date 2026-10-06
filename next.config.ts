@@ -1,11 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    // مانع توقف بیلد توسط خطاهای ESLint می‌شود
-    ignoreDuringBuilds: true,
-  },
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   typescript: {
-    // مانع توقف بیلد توسط خطاهای تایپ‌اسکریپت می‌شود
     ignoreBuildErrors: true,
   },
 };
