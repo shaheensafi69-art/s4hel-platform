@@ -17,7 +17,7 @@ const instructors = [
   { 
     name: "Shaheen Safi", 
     role: "Lead Strategist", 
-    course: "Shopify & Corporate Formation", // این بخش اضافه شد تا ارور ندهد
+    course: "Shopify & Corporate Formation",
     graduated: "1,200+ Founders", 
     desc: "Shaheen is the pioneer who introduced professional Shopify training in Afghanistan and Pakistan. He architected the S4HEL formation framework, allowing founders to launch US entities with 100% compliance.", 
     image: "/shaheen.jpeg"
@@ -79,7 +79,7 @@ export default function S4HEL_Victories() {
               whileInView={{ opacity: 1, x: 0 }}
               className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 p-12 bg-[#112240]/20 rounded-[50px] border border-white/5`}
             >
-              {/* عکس استاد */}
+              {/* Instructor Portrait */}
               <div className="w-64 h-64 rounded-[40px] border border-[#64FFDA]/20 overflow-hidden shrink-0 relative">
                   <Image 
                     src={ins.image} 

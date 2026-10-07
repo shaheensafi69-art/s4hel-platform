@@ -113,7 +113,7 @@ export default function EliteContactPage() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF7A00] via-orange-400 to-amber-300 not-italic">S4HEL LLC</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
-            Reach out directly to Sahel Salem (CEO) and our Montana corporate desk for US LLC formations, 400+ platform cashout routes, SafiPay banking integration, or S4HEL Skin Serums wholesale inquiries.
+            Reach out directly to Sahel Salem (CEO) and our Montana corporate desk for US LLC formations, 400+ platform cashout routes, SafiPay banking integration, or FinCEN regulatory compliance inquiries.
           </p>
         </div>
 
@@ -202,7 +202,7 @@ export default function EliteContactPage() {
                       >
                         <option value="Montana LLC Formation & 0% Sales Tax">Montana LLC Formation &amp; 0% Sales Tax</option>
                         <option value="400+ Platforms Cashout Clearance">400+ Platforms Cashout Clearance</option>
-                        <option value="S4HEL Skin Serums Wholesale & Private Label">S4HEL Skin Serums Wholesale &amp; Private Label</option>
+                        <option value="FinCEN BOI & Regulatory Compliance">FinCEN BOI &amp; Regulatory Compliance</option>
                         <option value="SafiPay Banking Gateway Integration">SafiPay Banking Gateway Integration</option>
                         <option value="Safi Academy Educational Partnerships">Safi Academy Educational Partnerships</option>
                         <option value="General Executive Inquiry">General Executive Inquiry</option>
@@ -214,7 +214,7 @@ export default function EliteContactPage() {
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-mono tracking-widest uppercase text-slate-300 block">Detailed Request / Issue Parameters</label>
                     <textarea
-                      required rows={5} placeholder="Describe your corporate, cashout, serum formulation, or banking inquiry..." value={message}
+                      required rows={5} placeholder="Describe your corporate, cashout, or banking inquiry..." value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       className="w-full bg-[#07192F] border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#FF7A00] transition-all resize-none leading-relaxed"
                     />

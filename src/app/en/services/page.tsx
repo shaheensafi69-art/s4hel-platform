@@ -139,10 +139,10 @@ export default function S4HEL_ServicesPage() {
       link: "/en/platforms",
     },
     {
-      title: "S4HEL Cosmeceuticals & Skin Serums",
-      desc: "Clinical-grade skin serums (Vitamin C, Hyaluronic Acid, Retinol 2.5%, Niacinamide) for retail, Amazon FBA, and OEM private-label branding.",
-      icon: <Sparkles className="text-[#FF7A00]" size={24} />,
-      link: "/en/serums",
+      title: "FinCEN BOI & Federal Corporate Compliance",
+      desc: "Mandatory Corporate Transparency Act (CTA) reporting, Beneficial Ownership Information filing, FinCEN ID management, and statutory shields.",
+      icon: <ShieldCheck className="text-[#FF7A00]" size={24} />,
+      link: "/en/services",
     },
     {
       title: "Business Education & Training (Safi Academy)",
@@ -179,7 +179,7 @@ export default function S4HEL_ServicesPage() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 font-medium leading-relaxed max-w-4xl mx-auto">
-            From our corporate headquarters in Kalispell, Montana, S4HEL LLC engineers end-to-end corporate infrastructures for founders worldwide. Register entities, open bank accounts via SafiPay, cash out 400+ platform revenues, enroll in Safi Academy, and source clinical S4HEL Skin Serums.
+            From our corporate headquarters in Kalispell, Montana, S4HEL LLC engineers end-to-end corporate infrastructures for founders worldwide. Register entities, open bank accounts via SafiPay, cash out 400+ platform revenues, enroll in Safi Academy, and scale institutional financial capabilities.
           </p>
         </section>
 

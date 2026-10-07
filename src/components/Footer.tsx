@@ -66,7 +66,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-slate-300 text-sm leading-relaxed max-w-lg">
-              S4HEL LLC is a multi-division international corporate enterprise headquartered in Kalispell, Montana. We engineer cross-border US &amp; UK corporate entities, universal cash-out gateways across 400+ platforms worldwide, and clinical-grade S4HEL Skin Serums distributed globally.
+              S4HEL LLC is a multi-division international corporate enterprise headquartered in Kalispell, Montana. We engineer cross-border US &amp; UK corporate entities, universal cash-out gateways across 400+ platforms worldwide, and institutional treasury solutions across our global ecosystem.
             </p>
 
             {/* Official Montana Address Card */}
@@ -100,7 +100,7 @@ export default function Footer() {
               Official Corporate Dispatch &amp; Bulletin
             </h4>
             <p className="text-slate-300 text-xs leading-relaxed max-w-md">
-              Subscribe for Montana corporate alerts, 400+ platform cash-out rate updates, Safi Academy courses, and S4HEL Skin Serums wholesale release schedules.
+              Subscribe for Montana corporate alerts, 400+ platform cash-out rate updates, Safi Academy courses, and international financial intelligence.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2 max-w-md">
@@ -139,8 +139,8 @@ export default function Footer() {
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Sparkles size={12} className="text-[#FF7A00]" />
-                Clinical Skin Serums
+                <Building2 size={12} className="text-[#FF7A00]" />
+                Tier-1 US Banking Rails
               </span>
             </div>
           </div>
@@ -180,18 +180,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* 3. S4HEL Skin Serums */}
+          {/* 3. Banking & Settlement Corridors */}
           <div className="space-y-3">
             <h5 className="text-white font-black text-xs uppercase tracking-wider text-[#FF7A00]">
-              S4HEL Skin Serums
+              Banking Corridors
             </h5>
             <ul className="space-y-2 text-xs text-slate-400">
-              <li><Link href="/en/serums" className="hover:text-[#FF7A00] transition-colors font-medium">Bio-Radiance Vitamin C 20%</Link></li>
-              <li><Link href="/en/serums" className="hover:text-[#FF7A00] transition-colors font-medium">Multi-Molecular Hyaluronic Acid</Link></li>
-              <li><Link href="/en/serums" className="hover:text-[#FF7A00] transition-colors font-medium">Cellular Renewal Retinol 2.5%</Link></li>
-              <li><Link href="/en/serums" className="hover:text-[#FF7A00] transition-colors font-medium">Clarifying Niacinamide 10%</Link></li>
-              <li><Link href="/en/serums" className="hover:text-[#FF7A00] transition-colors font-medium">Multi-Peptide Matrixyl 3000</Link></li>
-              <li><Link href="/en/serums" className="hover:text-[#FF7A00] transition-colors font-medium">Cica Barrier Recovery Serum</Link></li>
+              <li><Link href="/en/services" className="hover:text-[#FF7A00] transition-colors font-medium">Mercury Bank US Checking</Link></li>
+              <li><Link href="/en/services" className="hover:text-[#FF7A00] transition-colors font-medium">Relay Financial Multi-Account</Link></li>
+              <li><a href="https://safipay.net/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF7A00] transition-colors font-medium">SafiPay SEPA &amp; IBAN Rails</a></li>
+              <li><Link href="/en/services" className="hover:text-[#FF7A00] transition-colors font-medium">FinCEN BOI Compliance Desk</Link></li>
+              <li><Link href="/en/platforms" className="hover:text-[#FF7A00] transition-colors font-medium">USDT / USDC Fast Off-Ramp</Link></li>
+              <li><Link href="/en/services" className="hover:text-[#FF7A00] transition-colors font-medium">Multi-Currency Global Treasury</Link></li>
             </ul>
           </div>
 
@@ -203,7 +203,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <a href="https://safiinternationalcapitalltd.site/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-300 transition-colors flex items-center gap-1 font-bold text-amber-400">
-                  <span>Safi International Capital Ltd (Parent Holding)</span>
+                  <span>Safi Int. Capital (Parent Holding)</span>
                   <ExternalLink size={10} className="text-amber-500" />
                 </a>
               </li>
@@ -234,12 +234,6 @@ export default function Footer() {
               <li>
                 <a href="https://www.safiai.site/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors flex items-center gap-1">
                   <span>Safi AI</span>
-                  <ExternalLink size={10} className="text-slate-500" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.zevapp.com/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-400 transition-colors flex items-center gap-1">
-                  <span>Zev App</span>
                   <ExternalLink size={10} className="text-slate-500" />
                 </a>
               </li>

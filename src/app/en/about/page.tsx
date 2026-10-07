@@ -28,7 +28,7 @@ export default function S4HEL_AboutPage() {
   const ecosystemPlatforms = [
     {
       name: "Safi International Capital Ltd",
-      tag: "OFFICIAL PARENT COMPANY (شرکت مادر)",
+      tag: "OFFICIAL PARENT COMPANY (Parent Holding Company)",
       badge: "PARENT HOLDING & ASSETS",
       desc: "The supreme sovereign parent holding company of the Safi Conglomerate. Safi International Capital Ltd directs group treasury, institutional private equity, asset allocation, and umbrella governance across all subsidiary platforms.",
       url: "https://safiinternationalcapitalltd.site/",
@@ -122,9 +122,9 @@ export default function S4HEL_AboutPage() {
       icon: <Zap size={22} className="text-[#FF7A00]" />,
     },
     {
-      title: "S4HEL Cosmeceuticals & Skin Serums Division",
-      desc: "Developing and distributing clinical-grade skin serums (Vitamin C, Hyaluronic Acid, Retinol, Niacinamide) sold across Amazon FBA, TikTok Shop, and private label cosmetic networks.",
-      icon: <Sparkles size={22} className="text-[#FF7A00]" />,
+      title: "FinCEN BOI & Federal Corporate Compliance",
+      desc: "Ensuring 100% adherence to the Corporate Transparency Act (CTA) through real-time beneficial ownership reporting, statutory registered agent representation, and corporate shield defense.",
+      icon: <FileCheck2 size={22} className="text-[#FF7A00]" />,
     },
   ];
 
@@ -153,7 +153,7 @@ export default function S4HEL_AboutPage() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 font-medium leading-relaxed max-w-4xl mx-auto">
-            S4HEL LLC (S4hel Company) is an elite multi-faceted corporate firm headquartered in Kalispell, Montana. We empower international entrepreneurs with sovereign US LLC and UK corporate registrations, universal cash-out infrastructures across 400+ platforms worldwide, and high-performance physical consumer brands including S4HEL Skin Serums.
+            S4HEL LLC (S4hel Company) is an elite multi-faceted corporate firm headquartered in Kalispell, Montana. We empower international entrepreneurs with sovereign US LLC and UK corporate registrations, universal cash-out infrastructures across 400+ platforms worldwide, and institutional treasury solutions.
           </p>
 
           {/* Montana Official Headquarters Card */}
@@ -207,13 +207,10 @@ export default function S4HEL_AboutPage() {
 
               <div className="text-center md:text-left space-y-3 flex-grow">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-[10px] font-mono uppercase tracking-wider font-bold">
-                  <FileCheck2 size={13} /> OFFICIAL EXECUTIVE CONTRACT &bull; PARENT COMPANY: SAFI INTERNATIONAL CAPITAL LTD (شرکت مادر)
+                  <FileCheck2 size={13} /> OFFICIAL EXECUTIVE CONTRACT &bull; PARENT COMPANY: SAFI INTERNATIONAL CAPITAL LTD (Parent Holding Company)
                 </div>
                 <h3 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mt-1">
-                  Sahel Salem{" "}
-                  <span className="text-xl text-slate-400 font-normal font-sans not-italic">
-                    (ساحل سالم)
-                  </span>
+                  Sahel Salem
                 </h3>
                 <div className="text-sm font-bold text-white/90 uppercase tracking-wider text-[#FF7A00]">
                   Founder &amp; Chief Executive Officer (CEO)
@@ -223,20 +220,20 @@ export default function S4HEL_AboutPage() {
                   <span>BBA in Business Administration • Global Financial Law Focus</span>
                 </div>
                 <div className="text-[11px] text-slate-400 font-mono">
-                  Born: March 19, 2007 (۱۹ مارچ ۲۰۰۷) • Montana Registered Officer
+                  Born: March 19, 2007 • Montana Registered Officer
                 </div>
               </div>
             </div>
 
             {/* Sahel's Executive Quote */}
             <div className="my-8 p-5 rounded-2xl bg-[#07192F] border border-amber-400/40 italic text-slate-200 text-sm sm:text-base leading-relaxed">
-              &quot;Under our executive mandate governed by our parent holding entity, Safi International Capital Ltd (شرکت مادر), we engineer sovereign financial corridors, multi-currency corporate networks, and legally bulletproof banking infrastructures that give international founders complete dominion over their worldwide wealth.&quot;
+              &quot;Under our executive mandate governed by our parent holding entity, Safi International Capital Ltd (Parent Holding Company), we engineer sovereign financial corridors, multi-currency corporate networks, and legally bulletproof banking infrastructures that give international founders complete dominion over their worldwide wealth.&quot;
             </div>
 
             {/* Detailed Bio */}
             <div className="space-y-4 text-sm text-slate-300 leading-relaxed text-justify">
               <p>
-                <strong className="text-white">Sahel Salem (ساحل سالم)</strong> is the Founder and Chief Executive Officer (CEO) of S4HEL LLC and holds the official <strong className="text-amber-400">Executive Management Contract under our parent holding corporation, Safi International Capital Ltd (شرکت مادر)</strong>. Under his direction, the parent company oversees our interconnected multi-national conglomerate uniting institutional capital, digital banking (SafiPay), digital education (Safi Academy), telecommunications (Safi TopUp), software (Safi Pro), artificial intelligence (Safi AI), consumer technology (Zev App), and commercial corporate engineering (S4HEL LLC).
+                <strong className="text-white">Sahel Salem</strong> is the Founder and Chief Executive Officer (CEO) of S4HEL LLC and holds the official <strong className="text-amber-400">Executive Management Contract under our parent holding corporation, Safi International Capital Ltd (Parent Holding Company)</strong>. Under his direction, the parent company oversees our interconnected multi-national conglomerate uniting institutional capital, digital banking (SafiPay), digital education (Safi Academy), telecommunications (Safi TopUp), software (Safi Pro), artificial intelligence (Safi AI), consumer technology (Zev App), and commercial corporate engineering (S4HEL LLC).
               </p>
               <p>
                 Sahel&apos;s executive focus centers on direct European banking integration (dedicated SEPA Instant &amp; dedicated EUR/GBP IBAN accounts), establishing Tier-1 US corporate banking accounts with Mercury Bank and Relay Financial, and structuring compliant US corporate entities in Montana, Wyoming, and Delaware under the parent umbrella of Safi International Capital Ltd.
@@ -274,7 +271,7 @@ export default function S4HEL_AboutPage() {
                 </div>
                 <div className="flex items-start gap-2">
                   <CheckCircle size={14} className="text-[#FF7A00] shrink-0 mt-0.5" />
-                  <span>S4HEL Cosmeceuticals &amp; Skin Serums International Distribution</span>
+                  <span>Institutional Multi-Currency Treasury Architecture</span>
                 </div>
               </div>
             </div>
@@ -304,7 +301,7 @@ export default function S4HEL_AboutPage() {
               Safi Global Ecosystem
             </h2>
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl mx-auto">
-              Headed by supreme parent corporation <strong className="text-amber-300">Safi International Capital Ltd (شرکت مادر)</strong>, our conglomerate operates an interconnected network of institutional asset management, European SEPA banking, global digital education, enterprise software, AI, and commercial corporate engineering.
+              Headed by supreme parent corporation <strong className="text-amber-300">Safi International Capital Ltd (Parent Holding Company)</strong>, our conglomerate operates an interconnected network of institutional asset management, European SEPA banking, global digital education, enterprise software, AI, and commercial corporate engineering.
             </p>
           </div>
 
@@ -323,7 +320,7 @@ export default function S4HEL_AboutPage() {
                 </div>
                 <div className="space-y-2">
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/60 text-amber-300 text-[10px] font-mono uppercase tracking-widest font-black">
-                    ★ OFFICIAL PARENT COMPANY (شرکت مادر)
+                    ★ OFFICIAL PARENT COMPANY (Parent Holding Company)
                   </div>
                   <h3 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
                     Safi International Capital Ltd

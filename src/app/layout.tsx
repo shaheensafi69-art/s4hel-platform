@@ -5,12 +5,13 @@ import "@/app/globals.css";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "S4HEL LLC | Global Corporate Engineering, 400+ Platform Cashout & S4HEL Skin Serums",
-  description: "Official Headquarters of S4HEL LLC (Kalispell, Montana). Led by Sahel Salem (CEO). Premium US LLC Formations, Tier-1 Banking, 400+ Global Platform Cashout, and S4HEL Luxury Skin Serums.",
+  title: "S4HEL LLC | Global Corporate Engineering, Tier-1 Banking & 400+ Platform Cashout",
+  description: "Official Headquarters of S4HEL LLC (Kalispell, Montana). Directed by Sahel Salem (CEO) under Parent Company Safi International Capital Ltd. Premium Montana 0% Sales Tax LLCs, UK LTD, Tier-1 US & European Banking, and 400+ Platform Cashout Liquidity.",
   keywords: [
-    "S4HEL LLC", "S4HEL Company", "S4HEL Skin Serums", "Montana LLC", "Kalispell Montana",
+    "S4HEL LLC", "S4HEL Company", "Montana LLC Formation", "Kalispell Montana",
     "Sahel Salem", "US LLC Formation", "UK LTD", "Platform Cashout", "Upwork Amazon Payout",
-    "Skin Serum", "Vitamin C Serum", "Hyaluronic Acid", "Skincare Cosmeceuticals"
+    "Tier 1 Banking", "Mercury Bank Relay Financial", "SEPA Instant", "FinCEN BOI Compliance",
+    "Corporate Engineering", "Safi Global Ecosystem", "Safi International Capital Ltd"
   ],
   authors: [{ name: "Sahel Salem" }],
 };

@@ -57,7 +57,7 @@ export default function Header() {
   };
 
   return (
-    // FLOATING ROUNDED PILL HEADER IN THE AIR
+    // FLOATING ROUNDED PILL HEADER
     <header className="fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 w-[95%] sm:w-[94%] max-w-[1520px] z-50 transition-all duration-500">
       <div
         className={`w-full transition-all duration-300 rounded-2xl lg:rounded-full ${
@@ -227,64 +227,16 @@ export default function Header() {
               )}
             </div>
 
-            {/* 4. S4HEL SKIN SERUMS (DROPDOWN) */}
-            <div
-              className="relative"
-              onMouseEnter={() => handleMouseEnter("serums")}
-              onMouseLeave={handleMouseLeave}
+            {/* 4. ABOUT & LEADERSHIP */}
+            <Link
+              href="/en/about"
+              onClick={closeDropdown}
+              className="px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-200 hover:text-[#FF7A00] transition-colors rounded-full hover:bg-white/5"
             >
-              <button
-                className={`flex items-center gap-1 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider transition-colors rounded-full ${
-                  activeDropdown === "serums" ? "text-[#FF7A00] bg-white/5" : "text-slate-200 hover:text-[#FF7A00]"
-                }`}
-              >
-                <span>Skin Serums</span>
-                <ChevronDown size={13} className={`transition-transform duration-200 ${activeDropdown === "serums" ? "rotate-180" : ""}`} />
-              </button>
+              About &amp; CEO
+            </Link>
 
-              {activeDropdown === "serums" && (
-                <div className="absolute top-full left-0 mt-2 w-80 rounded-3xl bg-[#081B30]/98 border border-[#FF7A00]/30 shadow-[0_20px_50px_rgba(0,0,0,0.85)] p-2.5 space-y-1 backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-150">
-                  <div className="px-3 py-1.5 text-[9px] font-mono font-bold text-[#FF7A00] uppercase tracking-wider border-b border-white/5">
-                    S4HEL Clinical Cosmeceuticals
-                  </div>
-                  <Link
-                    href="/en/serums"
-                    onClick={closeDropdown}
-                    className="flex items-start gap-2.5 p-2 rounded-2xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
-                  >
-                    <Sparkles size={16} className="text-[#FF7A00] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-xs font-bold">Complete Serum Collection</div>
-                      <div className="text-[10px] text-slate-400">Clinical formulas, ingredients &amp; zero prices</div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/en/serums"
-                    onClick={closeDropdown}
-                    className="flex items-start gap-2.5 p-2 rounded-2xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
-                  >
-                    <Droplets size={16} className="text-[#FF7A00] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-xs font-bold">Vitamin C 20% &amp; Hyaluronic Acid</div>
-                      <div className="text-[10px] text-slate-400">Active formulations &amp; dermal testing</div>
-                    </div>
-                  </Link>
-                  <Link
-                    href="/en/serums"
-                    onClick={closeDropdown}
-                    className="flex items-start gap-2.5 p-2 rounded-2xl hover:bg-white/5 text-slate-200 hover:text-white transition-colors"
-                  >
-                    <Layers size={16} className="text-[#FF7A00] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-xs font-bold">Amazon &amp; TikTok Private Label</div>
-                      <div className="text-[10px] text-slate-400">OEM custom formulations &amp; wholesale batches</div>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* 5. OUR ECOSYSTEM (7 EXPANDED PLATFORMS IN DROPDOWN) */}
+            {/* 5. OUR ECOSYSTEM (7 PLATFORMS IN DROPDOWN) */}
             <div
               className="relative"
               onMouseEnter={() => handleMouseEnter("ecosystem")}
@@ -337,7 +289,7 @@ export default function Header() {
                     </div>
                     <div className="flex-grow">
                       <div className="text-xs font-bold flex items-center gap-1.5 text-white group-hover:text-[#FF7A00]">
-                        <span>Safi Academy</span>
+                        <span>Safi Academy (Education Hub)</span>
                         <ExternalLink size={10} className="text-slate-400" />
                       </div>
                       <div className="text-[10px] text-slate-400">Online Business &amp; E-Commerce Courses</div>
@@ -394,7 +346,7 @@ export default function Header() {
                     </div>
                     <div className="flex-grow">
                       <div className="text-xs font-bold flex items-center gap-1.5 text-amber-300 group-hover:text-amber-200">
-                        <span>Safi International Capital Ltd (Parent Company)</span>
+                        <span>Safi International Capital (Parent Company)</span>
                         <ExternalLink size={10} className="text-amber-400" />
                       </div>
                       <div className="text-[10px] text-slate-300">Official Parent Holding Company • Institutional Governance</div>
@@ -538,11 +490,11 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/en/serums"
+            href="/en/about"
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-3 rounded-2xl bg-white/5 text-white hover:text-[#FF7A00]"
           >
-            S4HEL Skin Serums
+            About &amp; CEO
           </Link>
 
           {/* ECOSYSTEM COLLAPSIBLE HEADER */}
@@ -623,7 +575,7 @@ export default function Header() {
                 <span className="w-5 h-5 rounded-md bg-white/10 p-0.5 inline-flex items-center justify-center overflow-hidden shrink-0">
                   <img src="/ecosystem/capital.png" alt="Safi Capital" className="w-full h-full object-contain" />
                 </span>
-                Safi International Capital Ltd (Parent Company)
+                Safi International Capital (Parent Company)
               </span>
               <ExternalLink size={12} />
             </a>
